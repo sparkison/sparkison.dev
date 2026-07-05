@@ -20,6 +20,7 @@ No frameworks, no bundler, no dependencies — clone it and open `index.html`.
 | `404.html` | Not-found page |
 | `robots.txt` / `sitemap.xml` / `llms.txt` | Crawler + answer-engine directives |
 | `site.webmanifest` / `favicon.svg` / `apple-touch-icon.png` / `og.png` | Icons & social share image |
+| `scripts/update-stats.mjs` | Refreshes GitHub star / Docker pull stats across all pages |
 
 ## Local preview
 
@@ -30,6 +31,20 @@ npx serve .
 # or
 python3 -m http.server 8080
 ```
+
+## Keeping stats fresh
+
+The community stats (GitHub stars, Docker pulls) are hardcoded in the HTML but
+marked with `data-stat` attributes. To sync them with live numbers:
+
+```sh
+node scripts/update-stats.mjs            # rewrites stats in place
+node scripts/update-stats.mjs --dry-run  # preview without writing
+```
+
+No dependencies or tokens needed — it hits the public GitHub and Docker Hub APIs,
+rounds the numbers down (911 → "900+"), and bumps `sitemap.xml`'s `lastmod` when
+anything changed. Run it before deploys, or wire it into CI on a schedule.
 
 ## Deploying
 
