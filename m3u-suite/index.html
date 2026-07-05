@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>The m3u Suite — Open Source, Self-Hosted IPTV Tools | Shaun Parkison</title>
+  <meta name="description" content="The m3u suite is a set of free, open source, self-hosted IPTV tools: m3u editor for playlist and EPG management, m3u proxy for hardware-accelerated stream delivery, and m3u tv for Android TV and Apple TV. Deploy with Docker.">
+  <meta name="author" content="Shaun Parkison">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://sparkison.dev/m3u-suite/">
+  <meta name="theme-color" content="#070b12">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sparkison.dev/m3u-suite/">
+  <meta property="og:site_name" content="sparkison.dev">
+  <meta property="og:title" content="The m3u Suite — Open Source, Self-Hosted IPTV Tools">
+  <meta property="og:description" content="m3u editor for playlists &amp; EPG, m3u proxy for hardware-accelerated stream delivery, m3u tv for Android TV &amp; Apple TV. Free, open source, Docker-ready.">
+  <meta property="og:image" content="https://sparkison.dev/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="The m3u suite by Shaun Parkison — editor, proxy, and tv">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The m3u Suite — Open Source, Self-Hosted IPTV Tools">
+  <meta name="twitter:description" content="m3u editor for playlists &amp; EPG, m3u proxy for hardware-accelerated delivery, m3u tv for Android TV &amp; Apple TV. Free, open source, Docker-ready.">
+  <meta name="twitter:image" content="https://sparkison.dev/og.png">
+
+  <!-- Icons -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+
+  <link rel="stylesheet" href="/styles.css">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://sparkison.dev/m3u-suite/#webpage",
+        "url": "https://sparkison.dev/m3u-suite/",
+        "name": "The m3u Suite — Open Source, Self-Hosted IPTV Tools",
+        "isPartOf": { "@id": "https://sparkison.dev/#website" },
+        "author": { "@id": "https://sparkison.dev/#person" },
+        "inLanguage": "en-US"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sparkison.dev/" },
+          { "@type": "ListItem", "position": 2, "name": "m3u suite", "item": "https://sparkison.dev/m3u-suite/" }
+        ]
+      },
+      {
+        "@type": "ItemList",
+        "@id": "https://sparkison.dev/m3u-suite/#list",
+        "name": "The m3u suite",
+        "description": "Open source, self-hosted IPTV tools by Shaun Parkison.",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "item": { "@id": "https://github.com/sparkison/m3u-editor#app" } },
+          { "@type": "ListItem", "position": 2, "item": { "@id": "https://github.com/sparkison/m3u-proxy#app" } },
+          { "@type": "ListItem", "position": 3, "item": { "@id": "https://github.com/m3ue/m3u-tv#app" } }
+        ]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://github.com/sparkison/m3u-editor#app",
+        "name": "m3u editor",
+        "url": "https://github.com/sparkison/m3u-editor",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "Docker, Linux",
+        "description": "A full-featured, self-hosted IPTV playlist editor with EPG management, Xtream API output, .strm file sync, and post-processing automation.",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "author": { "@id": "https://sparkison.dev/#person" },
+        "softwareHelp": { "@type": "CreativeWork", "url": "https://m3ue.sparkison.dev/" }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://github.com/sparkison/m3u-proxy#app",
+        "name": "m3u proxy",
+        "url": "https://github.com/sparkison/m3u-proxy",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "Docker, Linux",
+        "description": "A high-performance IPTV streaming proxy with failover support, comprehensive API management, and hardware-accelerated transcoding via FFmpeg.",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "author": { "@id": "https://sparkison.dev/#person" }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://github.com/m3ue/m3u-tv#app",
+        "name": "m3u tv",
+        "url": "https://github.com/m3ue/m3u-tv",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "Android TV, Apple TV, iOS, Android",
+        "description": "A cross-platform TV front-end player for m3u editor, bringing your library to Android TV, Apple TV, and mobile devices.",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "author": { "@id": "https://sparkison.dev/#person" }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://sparkison.dev/m3u-suite/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is m3u editor?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "m3u editor is a free, self-hosted IPTV playlist manager. It imports m3u, m3u8, m3u+ playlists and Xtream codes APIs, manages EPG data from XMLTV files, URLs, or Schedules Direct, outputs an Xtream-compatible API, syncs .strm files for media servers, and automates post-processing with scripts, webhooks, and email — features comparable to xteve or threadfin, and more."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is the m3u suite free?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. All three applications — m3u editor, m3u proxy, and m3u tv — are open source and free to use. Source code, releases, and issue trackers are on GitHub."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I install the m3u suite?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "m3u editor and m3u proxy deploy with Docker. Run m3u editor as a single container to start, or run separate m3u editor, m3u proxy, and Redis containers for more control and hardware-accelerated transcoding. Step-by-step guides are at m3ue.sparkison.dev."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What platforms does m3u tv support?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "m3u tv is built with Flutter and runs on Android TV, Apple TV, and mobile devices. It connects to your m3u editor server with secure credential storage."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="bg" aria-hidden="true">
+    <div class="bg-grid"></div>
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+  </div>
+
+  <header class="site-header">
+    <nav class="nav container" aria-label="Primary">
+      <a class="brand" href="/" aria-label="sparkison.dev — home">
+        <span class="brand-mark" aria-hidden="true">▶</span>sparkison<span class="brand-tld">.dev</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">
+        <span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/#work">Work</a></li>
+        <li><a href="/m3u-suite/" aria-current="page">m3u suite</a></li>
+        <li><a href="/services/">Services</a></li>
+        <li><a href="/#about">About</a></li>
+        <li><a href="/#contact">Contact</a></li>
+        <li>
+          <a class="nav-cta" href="https://github.com/sparkison" target="_blank" rel="noopener">
+            <svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+            GitHub
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- ============ PAGE HERO ============ -->
+    <section class="page-hero container">
+      <ol class="breadcrumb mono">
+        <li><a href="/">home</a></li>
+        <li aria-current="page">m3u suite</li>
+      </ol>
+      <p class="eyebrow mono reveal">// open source · self-hosted · docker-ready</p>
+      <h1 class="reveal">
+        Your streams,<br>
+        <span class="gradient-text">your server, your rules.</span>
+      </h1>
+      <p class="lede reveal">
+        The m3u suite is a family of free, open source IPTV tools — curate playlists
+        and EPG data, deliver streams with hardware acceleration, and watch it all
+        from the couch.
+      </p>
+      <div class="hero-actions reveal">
+        <a class="btn btn-primary" href="https://m3ue.sparkison.dev/" target="_blank" rel="noopener">Read the docs ↗</a>
+        <a class="btn btn-ghost" href="https://github.com/sparkison/m3u-editor" target="_blank" rel="noopener">Star on GitHub ↗</a>
+      </div>
+      <dl class="hero-stats reveal">
+        <div><dt class="mono">890+</dt><dd>GitHub stars across the suite</dd></div>
+        <div><dt class="mono">600K+</dt><dd>Docker pulls</dd></div>
+        <div><dt class="mono">100%</dt><dd>open source &amp; free</dd></div>
+      </dl>
+    </section>
+
+    <!-- ============ THE APPS ============ -->
+    <section class="section container" id="apps">
+      <p class="eyebrow mono reveal">// the apps</p>
+      <h2 class="reveal">Three tools, <span class="gradient-text">one pipeline</span></h2>
+
+      <div class="cards">
+        <article class="card reveal">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true">⌗</span>
+            <span class="chip-row"><span class="chip">Laravel</span><span class="chip">PHP</span></span>
+          </div>
+          <h3><a href="https://github.com/sparkison/m3u-editor" target="_blank" rel="noopener">m3u editor</a></h3>
+          <p>The control center — import, curate, and serve your playlists.</p>
+          <ul class="feature-list">
+            <li>Works with m3u, m3u8, m3u+ &amp; Xtream codes APIs</li>
+            <li>EPG from XMLTV files, URLs, or Schedules Direct</li>
+            <li>Xtream API output for any client</li>
+            <li><code>.strm</code> file sync for media servers</li>
+            <li>Post-processing: scripts, webhooks, email</li>
+          </ul>
+          <p class="card-links mono">
+            <a href="https://github.com/sparkison/m3u-editor" target="_blank" rel="noopener">source ↗</a>
+            <a href="https://m3ue.sparkison.dev/" target="_blank" rel="noopener">docs ↗</a>
+          </p>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true">⇄</span>
+            <span class="chip-row"><span class="chip">Python</span><span class="chip">FFmpeg</span></span>
+          </div>
+          <h3><a href="https://github.com/sparkison/m3u-proxy" target="_blank" rel="noopener">m3u proxy</a></h3>
+          <p>The delivery layer — restream or transcode, at speed.</p>
+          <ul class="feature-list">
+            <li>High-performance stream proxying</li>
+            <li>Automatic failover between sources</li>
+            <li>GPU-accelerated transcoding via FFmpeg</li>
+            <li>Direct proxy mode when transcoding isn't needed</li>
+            <li>Comprehensive management API</li>
+          </ul>
+          <p class="card-links mono">
+            <a href="https://github.com/sparkison/m3u-proxy" target="_blank" rel="noopener">source ↗</a>
+            <a href="https://m3ue.sparkison.dev/docs/deployment/m3u-proxy-integration/" target="_blank" rel="noopener">integration ↗</a>
+          </p>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-top">
+            <span class="card-icon" aria-hidden="true">▶</span>
+            <span class="chip-row"><span class="chip">Flutter</span><span class="chip">Dart</span></span>
+          </div>
+          <h3><a href="https://github.com/m3ue/m3u-tv" target="_blank" rel="noopener">m3u tv</a></h3>
+          <p>The living-room front end — your library on every screen.</p>
+          <ul class="feature-list">
+            <li>Native-feeling player for Android TV &amp; Apple TV</li>
+            <li>Mobile support from the same codebase</li>
+            <li>Connects straight to your m3u editor server</li>
+            <li>Secure credential storage</li>
+          </ul>
+          <p class="card-links mono">
+            <a href="https://github.com/m3ue/m3u-tv" target="_blank" rel="noopener">source ↗</a>
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ ARCHITECTURE ============ -->
+    <section class="section container" id="architecture">
+      <p class="eyebrow mono reveal">// how it fits together</p>
+      <h2 class="reveal">From playlist to <span class="gradient-text">picture</span></h2>
+      <ol class="step-list">
+        <li class="reveal">
+          <div>
+            <h3>Curate in m3u editor</h3>
+            <p>
+              Import playlists and EPG sources, organize channels and series, and expose
+              a clean Xtream-compatible API — one container to start, or split services
+              for more control.
+            </p>
+          </div>
+        </li>
+        <li class="reveal">
+          <div>
+            <h3>Deliver through m3u proxy</h3>
+            <p>
+              Pair the editor with m3u proxy (plus Redis) for restreaming, failover, and
+              hardware-accelerated transcoding when clients need a different format.
+            </p>
+          </div>
+        </li>
+        <li class="reveal">
+          <div>
+            <h3>Watch with m3u tv — or anything else</h3>
+            <p>
+              Use the suite's own TV app, or point any Xtream-compatible client at your
+              server. Your setup, your choice.
+            </p>
+          </div>
+        </li>
+      </ol>
+
+      <div class="beyond reveal">
+        <h3 class="beyond-title">Get started in minutes</h3>
+        <p>
+          Everything ships as Docker images with step-by-step guides at
+          <a href="https://m3ue.sparkison.dev/" target="_blank" rel="noopener">m3ue.sparkison.dev</a>.
+          Questions or feature ideas? The
+          <a href="https://github.com/sparkison/m3u-editor/issues" target="_blank" rel="noopener">issue tracker</a>
+          is active and answered.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="section container" id="faq">
+      <p class="eyebrow mono reveal">// faq</p>
+      <h2 class="reveal">Suite <span class="gradient-text">questions</span></h2>
+      <div class="faq-list">
+        <details class="faq-item reveal">
+          <summary>What is m3u editor?</summary>
+          <p>
+            A free, self-hosted IPTV playlist manager. It imports m3u, m3u8, m3u+
+            playlists and Xtream codes APIs, manages EPG data from XMLTV files, URLs, or
+            Schedules Direct, outputs an Xtream-compatible API, syncs <code>.strm</code>
+            files for media servers, and automates post-processing with scripts,
+            webhooks, and email — features comparable to xteve or threadfin, and more.
+          </p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>Is the m3u suite free?</summary>
+          <p>
+            Yes. All three applications — m3u editor, m3u proxy, and m3u tv — are open
+            source and free to use. Source code, releases, and issue trackers are on
+            <a href="https://github.com/sparkison" target="_blank" rel="noopener">GitHub</a>.
+          </p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>How do I install it?</summary>
+          <p>
+            With Docker. Run m3u editor as a single container to start, or run separate
+            m3u editor, m3u proxy, and Redis containers for more control and
+            hardware-accelerated transcoding. Step-by-step guides live at
+            <a href="https://m3ue.sparkison.dev/" target="_blank" rel="noopener">m3ue.sparkison.dev</a>.
+          </p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>What platforms does m3u tv support?</summary>
+          <p>
+            m3u tv is built with Flutter and runs on Android TV, Apple TV, and mobile
+            devices. It connects to your m3u editor server with secure credential storage.
+          </p>
+        </details>
+      </div>
+    </section>
+
+    <!-- ============ CTA ============ -->
+    <section class="section container contact" id="contact">
+      <p class="eyebrow mono reveal">// built by</p>
+      <h2 class="reveal">Made by <span class="gradient-text">Shaun Parkison</span></h2>
+      <p class="section-lede reveal">
+        I build the m3u suite in the open — and I bring the same end-to-end approach
+        to client and team work.
+      </p>
+      <div class="hero-actions reveal">
+        <a class="btn btn-primary" href="/services/">Work with me</a>
+        <a class="btn btn-ghost" href="/">More about me</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="mono">© <span id="year">2026</span> Shaun Parkison</p>
+      <nav class="footer-links mono" aria-label="Footer">
+        <a href="/m3u-suite/">m3u suite</a>
+        <a href="/services/">services</a>
+        <a href="https://github.com/sparkison" target="_blank" rel="noopener">github</a>
+        <a href="mailto:shparkison@gmail.com">email</a>
+      </nav>
+      <p class="mono footer-note">Hand-built. No frameworks, no trackers, just HTML &amp; CSS.</p>
+    </div>
+  </footer>
+
+  <script src="/main.js" defer></script>
+</body>
+</html>

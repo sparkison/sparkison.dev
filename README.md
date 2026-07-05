@@ -12,11 +12,13 @@ No frameworks, no bundler, no dependencies — clone it and open `index.html`.
 
 | File | Purpose |
 | --- | --- |
-| `index.html` | The whole site: content, meta tags, Open Graph, JSON-LD structured data |
+| `index.html` | Homepage: hero, m3u suite showcase, stack, about, FAQ, contact |
+| `services/index.html` | Landing page for hiring companies & clients ("hire a full stack developer") |
+| `m3u-suite/index.html` | Landing page for the m3u suite (features, architecture, install FAQ) |
 | `styles.css` | All styling (dark theme, custom properties, responsive) |
 | `main.js` | Progressive enhancement: scroll-reveal, mobile nav, footer year |
 | `404.html` | Not-found page |
-| `robots.txt` / `sitemap.xml` | Crawler directives + sitemap |
+| `robots.txt` / `sitemap.xml` / `llms.txt` | Crawler + answer-engine directives |
 | `site.webmanifest` / `favicon.svg` / `apple-touch-icon.png` / `og.png` | Icons & social share image |
 
 ## Local preview
@@ -37,8 +39,11 @@ JSON-LD `@id`s, `robots.txt`, and `sitemap.xml`.
 
 ## SEO checklist (already wired up)
 
-- Title / meta description / canonical
-- Open Graph + Twitter card with 1200×630 `og.png`
-- JSON-LD: `Person`, `WebSite`, `WebPage`, and `SoftwareApplication` for each m3u app
-- `robots.txt` + `sitemap.xml` (bump `lastmod` on meaningful content changes)
+- Unique title / meta description / canonical per page
+- Open Graph + Twitter card with 1200×630 `og.png` (`og:type=profile` on home)
+- JSON-LD: `Person`, `WebSite`, `ProfilePage`, `FAQPage`, `Service`,
+  `BreadcrumbList`, and `SoftwareApplication` for each m3u app
+- `robots.txt` + `sitemap.xml` (bump `lastmod` on meaningful content changes) + `llms.txt`
+- On-page FAQ sections mirroring the `FAQPage` schema (AEO: quotable answers)
+- Internal links between home ↔ services ↔ m3u-suite
 - Semantic HTML, single `h1`, skip link, `prefers-reduced-motion` support

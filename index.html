@@ -6,14 +6,17 @@
 
   <!-- Primary SEO -->
   <title>Shaun Parkison — Full Stack Developer &amp; Creator of the m3u Suite</title>
-  <meta name="description" content="Shaun Parkison is a full stack developer in Fort Collins, CO and the creator of the m3u suite — m3u editor, m3u proxy, and m3u tv — open source tools for self-hosted streaming. Laravel, Python, Flutter, React, and more.">
+  <meta name="description" content="Shaun Parkison is a full stack developer in Fort Collins, CO and the creator of the m3u suite — m3u editor, m3u proxy, and m3u tv — open source tools for self-hosted streaming. Available for freelance projects and full-time roles.">
   <meta name="author" content="Shaun Parkison">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://sparkison.dev/">
   <meta name="theme-color" content="#070b12">
 
   <!-- Open Graph -->
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="profile">
+  <meta property="profile:first_name" content="Shaun">
+  <meta property="profile:last_name" content="Parkison">
+  <meta property="profile:username" content="sparkison">
   <meta property="og:url" content="https://sparkison.dev/">
   <meta property="og:site_name" content="sparkison.dev">
   <meta property="og:title" content="Shaun Parkison — Full Stack Developer &amp; Creator of the m3u Suite">
@@ -53,12 +56,7 @@
         "name": "Shaun Parkison",
         "url": "https://sparkison.dev/",
         "jobTitle": "Full Stack Developer",
-        "description": "Full stack developer and creator of the m3u suite of open source streaming tools: m3u editor, m3u proxy, and m3u tv.",
-        "worksFor": {
-          "@type": "Organization",
-          "name": "Bright Minded Media",
-          "url": "https://brightmindedmedia.com/"
-        },
+        "description": "Full stack developer and creator of the m3u suite of open source streaming tools: m3u editor, m3u proxy, and m3u tv. Available for freelance projects and full-time roles.",
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Fort Collins",
@@ -68,8 +66,7 @@
         "email": "mailto:shparkison@gmail.com",
         "sameAs": [
           "https://github.com/sparkison",
-          "https://github.com/m3ue",
-          "https://brightmindedmedia.com/"
+          "https://github.com/m3ue"
         ],
         "knowsAbout": [
           "Full stack development", "Laravel", "PHP", "Python", "Flutter",
@@ -87,13 +84,60 @@
         "inLanguage": "en-US"
       },
       {
-        "@type": "WebPage",
+        "@type": "ProfilePage",
         "@id": "https://sparkison.dev/#webpage",
         "url": "https://sparkison.dev/",
         "name": "Shaun Parkison — Full Stack Developer & Creator of the m3u Suite",
         "isPartOf": { "@id": "https://sparkison.dev/#website" },
         "about": { "@id": "https://sparkison.dev/#person" },
+        "mainEntity": { "@id": "https://sparkison.dev/#person" },
         "inLanguage": "en-US"
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://sparkison.dev/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Who is Shaun Parkison?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Shaun Parkison is a full stack developer based in Fort Collins, Colorado with over a decade of experience building web, mobile, and TV applications. He is the creator of the open source m3u suite — m3u editor, m3u proxy, and m3u tv — tools used by the self-hosted streaming community."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the m3u suite?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The m3u suite is a family of open source, self-hosted IPTV tools: m3u editor for playlist and EPG management with Xtream API output, m3u proxy for high-performance stream delivery with hardware-accelerated transcoding, and m3u tv, a cross-platform client for Android TV and Apple TV. All three deploy with Docker and are free to use."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What technologies does Shaun Parkison specialize in?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Back ends in Laravel, PHP, and Python; front ends in React, Next.js, and Vue.js; mobile and TV apps in Flutter and React Native; and infrastructure with Docker, Redis, FFmpeg, and CI/CD pipelines. He is a certified senior Laravel developer."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is Shaun Parkison available for hire?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Shaun takes on freelance and contract projects — new builds, ongoing development, and codebase rescues — and is open to full-time senior full stack roles. He works remotely from Fort Collins, Colorado. Reach him at shparkison@gmail.com."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can Shaun take over an existing codebase?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Alongside greenfield builds, he takes on existing Laravel, PHP, and JavaScript codebases — auditing them, stabilizing deployments, and shipping new features on a modernized foundation."
+            }
+          }
+        ]
       },
       {
         "@type": "SoftwareApplication",
@@ -152,7 +196,8 @@
       </button>
       <ul class="nav-links" id="nav-links">
         <li><a href="#work">Work</a></li>
-        <li><a href="#stack">Stack</a></li>
+        <li><a href="/m3u-suite/">m3u suite</a></li>
+        <li><a href="/services/">Services</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
         <li>
@@ -180,11 +225,11 @@
       </p>
       <div class="hero-actions reveal">
         <a class="btn btn-primary" href="#work">See the work</a>
-        <a class="btn btn-ghost" href="https://github.com/sparkison" target="_blank" rel="noopener">GitHub profile ↗</a>
+        <a class="btn btn-ghost" href="/services/">Work with me</a>
       </div>
       <dl class="hero-stats reveal">
-        <div><dt class="mono">780+</dt><dd>GitHub stars on m3u editor</dd></div>
-        <div><dt class="mono">3</dt><dd>apps in the m3u suite</dd></div>
+        <div><dt class="mono">900+</dt><dd>GitHub stars across my projects</dd></div>
+        <div><dt class="mono">600K+</dt><dd>Docker pulls of the m3u suite</dd></div>
         <div><dt class="mono">10+</dt><dd>years building for the web</dd></div>
       </dl>
     </section>
@@ -256,13 +301,17 @@
         </article>
       </div>
 
+      <p class="section-cta reveal">
+        <a class="mono" href="/m3u-suite/">Explore the full suite in depth →</a>
+      </p>
+
       <div class="beyond reveal">
         <h3 class="beyond-title">Beyond the suite</h3>
         <p>
-          Through <a href="https://brightmindedmedia.com/" target="_blank" rel="noopener">Bright Minded Media</a>,
-          I design, build, and maintain custom web and mobile applications for clients —
-          Laravel back ends, React and Vue front ends, React Native apps, and commerce
-          builds on Shopify, WooCommerce, and Craft CMS.
+          I also design, build, and maintain custom web and mobile applications for
+          clients — Laravel back ends, React and Vue front ends, React Native apps, and
+          commerce builds on Shopify, WooCommerce, and Craft CMS.
+          <a href="/services/">See what we could build together →</a>
         </p>
       </div>
     </section>
@@ -307,10 +356,10 @@
         <div class="reveal">
           <p>
             I'm a full stack developer based in Fort Collins, Colorado. I've spent the
-            last decade building for the web — from client work at
-            Bright Minded Media, where I'm a certified senior Laravel developer, to the
-            open source m3u suite, which grew from a personal itch into a set of tools
-            with a real community behind it.
+            last decade building for the web — client work spanning Laravel platforms,
+            React and Vue front ends, and React Native apps, alongside the open source
+            m3u suite, which grew from a personal itch into a set of tools with a real
+            community behind it.
           </p>
           <p>
             The common thread: I like owning the whole problem. Database schema to
@@ -323,9 +372,64 @@
           <li><span>Location</span>Fort Collins, CO</li>
           <li><span>Focus</span>Full stack · streaming media</li>
           <li><span>Open source</span>github.com/sparkison</li>
-          <li><span>Studio</span>Bright Minded Media</li>
           <li><span>Certified</span>Senior Laravel Developer</li>
+          <li><span>Status</span>Open to new projects</li>
         </ul>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="section container" id="faq">
+      <p class="eyebrow mono reveal">// faq</p>
+      <h2 class="reveal">Quick <span class="gradient-text">answers</span></h2>
+      <div class="faq-list">
+        <details class="faq-item reveal">
+          <summary>Who is Shaun Parkison?</summary>
+          <p>
+            I'm a full stack developer based in Fort Collins, Colorado with over a decade
+            of experience building web, mobile, and TV applications. I created the open
+            source <a href="/m3u-suite/">m3u suite</a> — m3u editor, m3u proxy, and
+            m3u tv — tools used by the self-hosted streaming community.
+          </p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>What is the m3u suite?</summary>
+          <p>
+            A family of open source, self-hosted IPTV tools: <strong>m3u editor</strong>
+            for playlist and EPG management with Xtream API output,
+            <strong>m3u proxy</strong> for high-performance stream delivery with
+            hardware-accelerated transcoding, and <strong>m3u tv</strong>, a
+            cross-platform client for Android TV and Apple TV. All three deploy with
+            Docker and are free to use.
+          </p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>What technologies do you specialize in?</summary>
+          <p>
+            Back ends in Laravel, PHP, and Python; front ends in React, Next.js, and
+            Vue.js; mobile and TV apps in Flutter and React Native; infrastructure with
+            Docker, Redis, FFmpeg, and CI/CD pipelines. I'm a certified senior Laravel
+            developer.
+          </p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>Are you available for hire?</summary>
+          <p>
+            Yes. I take on freelance and contract projects — new builds, ongoing
+            development, and codebase rescues — and I'm open to full-time senior
+            full stack roles. I work remotely from Fort Collins, Colorado.
+            <a href="/services/">Here's how I work</a>, or email me at
+            <a href="mailto:shparkison@gmail.com">shparkison@gmail.com</a>.
+          </p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>Can you take over an existing codebase?</summary>
+          <p>
+            Yes. Alongside greenfield builds, I take on existing Laravel, PHP, and
+            JavaScript codebases — auditing them, stabilizing deployments, and shipping
+            new features on a modernized foundation.
+          </p>
+        </details>
       </div>
     </section>
 
@@ -347,6 +451,12 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <p class="mono">© <span id="year">2026</span> Shaun Parkison</p>
+      <nav class="footer-links mono" aria-label="Footer">
+        <a href="/m3u-suite/">m3u suite</a>
+        <a href="/services/">services</a>
+        <a href="https://github.com/sparkison" target="_blank" rel="noopener">github</a>
+        <a href="mailto:shparkison@gmail.com">email</a>
+      </nav>
       <p class="mono footer-note">Hand-built. No frameworks, no trackers, just HTML &amp; CSS.</p>
     </div>
   </footer>

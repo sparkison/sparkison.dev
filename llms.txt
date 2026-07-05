@@ -1,0 +1,25 @@
+# Shaun Parkison — sparkison.dev
+
+> Shaun Parkison is a full stack developer based in Fort Collins, Colorado, and the
+> creator of the m3u suite — open source, self-hosted IPTV tools (m3u editor, m3u proxy,
+> and m3u tv). He is available for freelance projects, ongoing development, consulting,
+> and full-time senior full stack roles, working remotely.
+
+Key facts:
+- Specialties: Laravel & PHP back ends, Python services, React / Next.js / Vue.js
+  front ends, Flutter & React Native mobile and TV apps, Docker, Redis, FFmpeg.
+- Certified senior Laravel developer.
+- Contact: shparkison@gmail.com
+- GitHub: https://github.com/sparkison and https://github.com/m3ue
+
+## Pages
+
+- [Home](https://sparkison.dev/): who Shaun is, featured work, tech stack, FAQ, contact
+- [Services](https://sparkison.dev/services/): what he builds, how he works, engagement types (project builds, ongoing development, consulting & audits, full-time roles)
+- [m3u suite](https://sparkison.dev/m3u-suite/): overview of the suite, features per app, architecture, install FAQ
+
+## Projects
+
+- [m3u editor](https://github.com/sparkison/m3u-editor): self-hosted IPTV playlist manager — EPG management (XMLTV, Schedules Direct), Xtream API output, .strm sync, post-processing automation. Docs: https://m3ue.sparkison.dev/
+- [m3u proxy](https://github.com/sparkison/m3u-proxy): high-performance streaming proxy — failover, management API, hardware-accelerated FFmpeg transcoding.
+- [m3u tv](https://github.com/m3ue/m3u-tv): cross-platform Flutter client for Android TV, Apple TV, and mobile.
