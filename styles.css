@@ -147,6 +147,11 @@ body {
   color: #04121c;
 }
 
+.brand-mark svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
 .brand-tld { color: var(--accent); }
 
 .nav-links {
@@ -386,6 +391,11 @@ button.btn {
   background: rgba(45, 212, 191, 0.1);
   border: 1px solid rgba(45, 212, 191, 0.25);
   color: var(--accent);
+}
+
+.card-icon svg {
+  width: 1.45rem;
+  height: 1.45rem;
 }
 
 .card h3 a {
