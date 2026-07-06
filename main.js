@@ -34,6 +34,25 @@ if (toggle && links) {
   });
 }
 
+// Rotating hero phrases
+const rotator = document.querySelector(".rotate-words");
+if (rotator && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  try {
+    const phrases = JSON.parse(rotator.dataset.phrases);
+    let i = 0;
+    setInterval(() => {
+      rotator.classList.add("is-swapping");
+      setTimeout(() => {
+        i = (i + 1) % phrases.length;
+        rotator.textContent = phrases[i];
+        rotator.classList.remove("is-swapping");
+      }, 350);
+    }, 3800);
+  } catch {
+    // malformed data-phrases: leave the static text alone
+  }
+}
+
 // Footer year
 const year = document.getElementById("year");
 if (year) year.textContent = new Date().getFullYear();

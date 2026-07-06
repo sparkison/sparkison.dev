@@ -220,6 +220,18 @@ h3 { font-size: 1.3rem; font-weight: 600; }
   color: transparent;
 }
 
+.rotate-words {
+  display: inline-block;
+  opacity: 1;
+  transform: none;
+  transition: opacity 350ms ease, transform 350ms ease;
+}
+
+.rotate-words.is-swapping {
+  opacity: 0;
+  transform: translateY(0.35em);
+}
+
 .eyebrow {
   color: var(--accent);
   font-size: 0.85rem;
