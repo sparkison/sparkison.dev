@@ -20,7 +20,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
-const PAGES = ["index.html", "services/index.html", "m3u-suite/index.html"];
+const PAGES = ["index.html", "services/index.html", "m3u-suite/index.html", "resume/index.html"];
 const DRY_RUN = process.argv.includes("--dry-run");
 
 async function getJSON(url) {

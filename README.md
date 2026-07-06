@@ -15,6 +15,7 @@ No frameworks, no bundler, no dependencies — clone it and open `index.html`.
 | `index.html` | Homepage: hero, m3u suite showcase, stack, about, FAQ, contact |
 | `services/index.html` | Landing page for hiring companies & clients ("hire a full stack developer") |
 | `m3u-suite/index.html` | Landing page for the m3u suite (features, architecture, install FAQ) |
+| `resume/index.html` | Resume: experience, projects, skills, education (print-to-PDF friendly) |
 | `styles.css` | All styling (dark theme, custom properties, responsive) |
 | `main.js` | Progressive enhancement: scroll-reveal, mobile nav, footer year |
 | `404.html` | Not-found page |

@@ -53,6 +53,9 @@ if (rotator && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
   }
 }
 
+// Print button (resume page)
+document.getElementById("print-resume")?.addEventListener("click", () => window.print());
+
 // Footer year
 const year = document.getElementById("year");
 if (year) year.textContent = new Date().getFullYear();

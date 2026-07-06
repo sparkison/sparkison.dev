@@ -300,6 +300,12 @@ code {
   color: var(--text);
 }
 
+button.btn {
+  background: none;
+  font-family: inherit;
+  cursor: pointer;
+}
+
 .btn-ghost:hover {
   border-color: rgba(45, 212, 191, 0.5);
   background: rgba(45, 212, 191, 0.07);
@@ -634,6 +640,56 @@ code {
 .step-list h3 { font-size: 1.1rem; margin-bottom: 0.25rem; }
 .step-list p { color: var(--muted); font-size: 0.98rem; }
 
+/* ---------- resume ---------- */
+
+.resume-meta {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.75rem;
+  margin-top: 1.75rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.resume-meta a { color: var(--muted); text-decoration: none; }
+.resume-meta a:hover { color: var(--text); }
+
+.xp-list {
+  list-style: none;
+  display: grid;
+  gap: 2.25rem;
+  margin-top: 2.75rem;
+  max-width: 52rem;
+}
+
+.xp {
+  display: grid;
+  grid-template-columns: 9.5rem 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.xp-dates {
+  font-size: 0.8rem;
+  color: var(--accent);
+  padding-top: 0.35rem;
+  white-space: nowrap;
+}
+
+.xp h3 { font-size: 1.15rem; }
+
+.xp-org {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin: 0.2rem 0 0.85rem;
+}
+
+@media (max-width: 640px) {
+  .xp { grid-template-columns: 1fr; gap: 0.4rem; }
+  .xp-dates { padding-top: 0; }
+}
+
 /* ---------- contact / footer ---------- */
 
 .contact { text-align: center; }
@@ -690,6 +746,41 @@ code {
 
 /* no-js fallback: everything visible */
 .no-observer .reveal { opacity: 1; transform: none; }
+
+/* ---------- print (resume → PDF) ---------- */
+
+@media print {
+  :root {
+    --bg: #ffffff;
+    --surface: #ffffff;
+    --surface-2: #ffffff;
+    --line: #d5dbe3;
+    --text: #111826;
+    --muted: #3f4a5a;
+    --accent: #0e7a6c;
+  }
+
+  body { font-size: 11pt; }
+
+  .bg, .site-header, .site-footer, .skip-link,
+  .breadcrumb, .hero-actions, .btn { display: none !important; }
+
+  .gradient-text, .hero-stats dt {
+    background: none;
+    -webkit-background-clip: initial;
+    background-clip: initial;
+    color: var(--text);
+  }
+
+  .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+
+  .page-hero { padding-top: 0; }
+  .section { padding-block: 1.5rem; }
+  .section h2 { break-after: avoid; }
+  .card, .stack-group, .xp, .faq-item { break-inside: avoid; box-shadow: none; }
+
+  a { color: var(--text); text-decoration: none; }
+}
 
 /* ---------- responsive ---------- */
 

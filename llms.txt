@@ -8,15 +8,21 @@
 Key facts:
 - Specialties: Laravel & PHP back ends, Python services, React / Next.js / Vue.js
   front ends, Flutter & React Native mobile and TV apps, Docker, Redis, FFmpeg.
-- Certified senior Laravel developer.
-- Contact: shparkison@gmail.com
+- Certified senior Laravel developer (official Laravel certification program).
+- B.S. in Computer Science (minor in Mathematics), Colorado State University.
+- Experience: Senior Developer at NerdyMind Marketing (2015–2024); independent
+  studio owner & lead developer (2009–present); creator & maintainer of the
+  m3u suite (2024–present).
+- Contact: hello@sparkison.dev
 - GitHub: https://github.com/sparkison and https://github.com/m3ue
+- LinkedIn: https://www.linkedin.com/in/shaun-parkison-254a2218/
 
 ## Pages
 
 - [Home](https://sparkison.dev/): who Shaun is, featured work, tech stack, FAQ, contact
 - [Services](https://sparkison.dev/services/): what he builds, how he works, engagement types (project builds, ongoing development, consulting & audits, full-time roles)
 - [m3u suite](https://sparkison.dev/m3u-suite/): overview of the suite, features per app, architecture, install FAQ
+- [Resume](https://sparkison.dev/resume/): work experience, selected projects, skills, education & certification
 
 ## Projects
 
