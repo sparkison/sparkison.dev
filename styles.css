@@ -278,6 +278,8 @@ code {
   padding-bottom: clamp(4rem, 9vh, 7rem);
 }
 
+.hero-tall { min-height: 70vh; }
+
 .lede {
   max-width: 34rem;
   margin-top: 1.5rem;

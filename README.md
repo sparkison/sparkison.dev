@@ -110,6 +110,46 @@ HTML pages and `og.png`/`favicon.svg`/`apple-touch-icon.png` off this rule (or o
 short TTL) since those aren't cache-busted — after editing any of those, purge
 cache for the specific URL in Cloudflare (Caching → Configuration → Custom Purge).
 
+## Security headers (Cloudflare)
+
+Same root cause as caching: GitHub Pages can't set response headers, so Lighthouse's
+"Best Practices" flags for missing CSP, HSTS, COOP, X-Frame-Options, and Trusted
+Types get fixed the same way — at Cloudflare.
+
+**HSTS** — use Cloudflare's built-in panel rather than a manual header:
+**SSL/TLS → Edge Certificates → HTTP Strict Transport Security (HSTS)** → Enable,
+max-age 6–12 months to start (1 year once you're confident), include subdomains.
+
+**Everything else** — one Transform Rule:
+**Rules → Transform Rules → Modify Response Header → Create rule**, match all
+incoming requests, and add these as static header values:
+
+| Header | Value |
+| --- | --- |
+| `Content-Security-Policy` | `default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; require-trusted-types-for 'script'; upgrade-insecure-requests` |
+| `X-Frame-Options` | `DENY` |
+| `Cross-Origin-Opener-Policy` | `same-origin` |
+
+This works cleanly because the site has no inline `<script>`/`<style>` attributes,
+no `eval`, and no `innerHTML`/`document.write` — `main.js` only uses `classList`,
+`textContent`, and `addEventListener`, so `require-trusted-types-for 'script'`
+doesn't need a policy allowlist. The `<script type="application/ld+json">` blocks
+are exempt from `script-src` by spec (browsers never execute them as script).
+
+**One conflict to resolve first**: Cloudflare's **Email Obfuscation** (Scrape
+Shield) is on by default and rewrites `mailto:` links, injecting its own inline
+script + `/cdn-cgi/scripts/.../email-decode.min.js` to un-obfuscate them client
+side. A strict `script-src 'self'` (no `'unsafe-inline'`) will block that inline
+snippet, breaking the contact links. Turn it off — **Scrape Shield → Email
+Address Obfuscation → Off** — since the site doesn't need it (fits the "no
+trackers" ethos anyway) and it also happens to be the source of the
+`StorageType.persistent is deprecated` console warning, so disabling it clears
+that too.
+
+After changing anything here, re-run PageSpeed Insights / Lighthouse — Best
+Practices should read 100 once the rule + HSTS panel are both live and DNS/edge
+has propagated (usually under a minute for Cloudflare rules).
+
 ## Deploying
 
 Static output, deployable to GitHub Pages, Cloudflare Pages, Netlify, or Vercel.

@@ -127,7 +127,7 @@ export function renderNotFound(data, assetVersion) {
     <div class="bg-grid"></div>
     <div class="bg-glow bg-glow-1"></div>
   </div>
-  <main class="hero container" style="min-height: 70vh;">
+  <main class="hero container hero-tall">
     <p class="eyebrow mono">// HTTP 404 — signal lost</p>
     <h1>Channel <span class="gradient-text">not found.</span></h1>
     <p class="lede">This page doesn't exist — maybe it never did, maybe the playlist changed.</p>
