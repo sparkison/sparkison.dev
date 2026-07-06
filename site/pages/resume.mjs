@@ -1,180 +1,13 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- Primary SEO -->
-  <title>Resume — Shaun Parkison, Senior Full Stack Developer</title>
-  <meta name="description" content="Resume of Shaun Parkison, senior full stack developer in Fort Collins, CO. 15+ years of experience, B.S. in Computer Science, certified Laravel developer, and creator of the open source m3u suite (600K+ Docker pulls).">
-  <meta name="author" content="Shaun Parkison">
-  <meta name="robots" content="index, follow, max-image-preview:large">
-  <link rel="canonical" href="https://sparkison.dev/resume/">
-  <meta name="theme-color" content="#070b12">
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="profile">
-  <meta property="profile:first_name" content="Shaun">
-  <meta property="profile:last_name" content="Parkison">
-  <meta property="profile:username" content="sparkison">
-  <meta property="og:url" content="https://sparkison.dev/resume/">
-  <meta property="og:site_name" content="sparkison.dev">
-  <meta property="og:title" content="Resume — Shaun Parkison, Senior Full Stack Developer">
-  <meta property="og:description" content="15+ years of experience, B.S. in Computer Science, certified Laravel developer, and creator of the open source m3u suite.">
-  <meta property="og:image" content="https://sparkison.dev/og.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Shaun Parkison — full stack developer, creator of the m3u suite">
-  <meta property="og:locale" content="en_US">
-
-  <!-- Twitter / X -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Resume — Shaun Parkison, Senior Full Stack Developer">
-  <meta name="twitter:description" content="15+ years of experience, B.S. in Computer Science, certified Laravel developer, and creator of the open source m3u suite.">
-  <meta name="twitter:image" content="https://sparkison.dev/og.png">
-
-  <!-- Icons -->
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="manifest" href="/site.webmanifest">
-
-  <!-- Fonts (self-hosted, no CDN) -->
-  <link rel="preload" href="/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/jetbrains-mono.woff2" as="font" type="font/woff2" crossorigin>
-
-  <link rel="stylesheet" href="/styles.css">
-
-  <!-- Structured data -->
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "ProfilePage",
-      "@id": "https://sparkison.dev/resume/#webpage",
-      "url": "https://sparkison.dev/resume/",
-      "name": "Resume — Shaun Parkison, Senior Full Stack Developer",
-      "isPartOf": {
-        "@id": "https://sparkison.dev/#website"
-      },
-      "about": {
-        "@id": "https://sparkison.dev/#person"
-      },
-      "mainEntity": {
-        "@id": "https://sparkison.dev/#person"
-      },
-      "inLanguage": "en-US"
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://sparkison.dev/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Resume",
-          "item": "https://sparkison.dev/resume/"
-        }
-      ]
-    },
-    {
-      "@type": "Person",
-      "@id": "https://sparkison.dev/#person",
-      "name": "Shaun Parkison",
-      "jobTitle": "Senior Full Stack Developer",
-      "url": "https://sparkison.dev/",
-      "email": "mailto:hello@sparkison.dev",
-      "sameAs": [
-        "https://github.com/sparkison",
-        "https://github.com/m3ue",
-        "https://www.linkedin.com/in/shaun-parkison-254a2218/"
-      ],
-      "alumniOf": [
-        {
-          "@type": "CollegeOrUniversity",
-          "name": "Colorado State University",
-          "sameAs": "https://www.colostate.edu/"
-        },
-        {
-          "@type": "CollegeOrUniversity",
-          "name": "Front Range Community College",
-          "sameAs": "https://www.frontrange.edu/"
-        }
-      ],
-      "hasCredential": [
-        {
-          "@type": "EducationalOccupationalCredential",
-          "credentialCategory": "degree",
-          "name": "B.S. in Computer Science, Minor in Mathematics",
-          "recognizedBy": {
-            "@type": "CollegeOrUniversity",
-            "name": "Colorado State University"
-          }
-        },
-        {
-          "@type": "EducationalOccupationalCredential",
-          "credentialCategory": "degree",
-          "name": "Associate in Business (Summa Cum Laude)",
-          "recognizedBy": {
-            "@type": "CollegeOrUniversity",
-            "name": "Front Range Community College"
-          }
-        },
-        {
-          "@type": "EducationalOccupationalCredential",
-          "credentialCategory": "certification",
-          "name": "Laravel Certified Developer",
-          "recognizedBy": {
-            "@type": "Organization",
-            "name": "Laravel Certification Program"
-          }
-        }
-      ]
-    }
-  ]
-}
-  </script>
-</head>
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
-
-  <div class="bg" aria-hidden="true">
-    <div class="bg-grid"></div>
-    <div class="bg-glow bg-glow-1"></div>
-    <div class="bg-glow bg-glow-2"></div>
-  </div>
-
-  <header class="site-header">
-    <nav class="nav container" aria-label="Primary">
-      <a class="brand" href="/" aria-label="sparkison.dev — home">
-        <span class="brand-mark" aria-hidden="true"><svg fill="currentColor" viewBox="0 -960 960 960"><path d="M320-273v-414q0-17 12-28.5t28-11.5q5 0 10.5 1.5T381-721l326 207q9 6 13.5 15t4.5 19q0 10-4.5 19T707-446L381-239q-5 3-10.5 4.5T360-233q-16 0-28-11.5T320-273Z"/></svg></span>sparkison<span class="brand-tld">.dev</span>
-      </a>
-      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">
-        <span></span><span></span>
-      </button>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="/#work">Work</a></li>
-        <li><a href="/m3u-suite/">m3u suite</a></li>
-        <li><a href="/services/">Services</a></li>
-        <li><a href="/resume/" aria-current="page">Resume</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li>
-          <a class="nav-cta" href="https://github.com/sparkison" target="_blank" rel="noopener">
-            <svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-            GitHub
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </header>
-
-  <main id="main" class="resume">
-
+export default {
+  path: "/resume/",
+  active: "resume",
+  ogType: "profile",
+  mainClass: "resume",
+  title: "Resume — Shaun Parkison, Senior Full Stack Developer",
+  description: "Resume of Shaun Parkison, senior full stack developer in Fort Collins, CO. 15+ years of experience, B.S. in Computer Science, certified Laravel developer, and creator of the open source m3u suite (600K+ Docker pulls).",
+  ogDescription: "15+ years of experience, B.S. in Computer Science, certified Laravel developer, and creator of the open source m3u suite.",
+  jsonLd: {"@context":"https://schema.org","@graph":[{"@type":"ProfilePage","@id":"https://sparkison.dev/resume/#webpage","url":"https://sparkison.dev/resume/","name":"Resume — Shaun Parkison, Senior Full Stack Developer","isPartOf":{"@id":"https://sparkison.dev/#website"},"about":{"@id":"https://sparkison.dev/#person"},"mainEntity":{"@id":"https://sparkison.dev/#person"},"inLanguage":"en-US"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sparkison.dev/"},{"@type":"ListItem","position":2,"name":"Resume","item":"https://sparkison.dev/resume/"}]},{"@type":"Person","@id":"https://sparkison.dev/#person","name":"Shaun Parkison","jobTitle":"Senior Full Stack Developer","url":"https://sparkison.dev/","email":"mailto:hello@sparkison.dev","sameAs":["https://github.com/sparkison","https://github.com/m3ue","https://www.linkedin.com/in/shaun-parkison-254a2218/"],"alumniOf":[{"@type":"CollegeOrUniversity","name":"Colorado State University","sameAs":"https://www.colostate.edu/"},{"@type":"CollegeOrUniversity","name":"Front Range Community College","sameAs":"https://www.frontrange.edu/"}],"hasCredential":[{"@type":"EducationalOccupationalCredential","credentialCategory":"degree","name":"B.S. in Computer Science, Minor in Mathematics","recognizedBy":{"@type":"CollegeOrUniversity","name":"Colorado State University"}},{"@type":"EducationalOccupationalCredential","credentialCategory":"degree","name":"Associate in Business (Summa Cum Laude)","recognizedBy":{"@type":"CollegeOrUniversity","name":"Front Range Community College"}},{"@type":"EducationalOccupationalCredential","credentialCategory":"certification","name":"Laravel Certified Developer","recognizedBy":{"@type":"Organization","name":"Laravel Certification Program"}}]}]},
+  main: (data) => `
 <!-- ============ PAGE HERO ============ -->
     <section class="page-hero container">
       <ol class="breadcrumb mono">
@@ -215,8 +48,8 @@
               <li>Designed and built a three-app ecosystem: a Laravel/PHP playlist &amp; EPG manager,
                 a Python streaming proxy with hardware-accelerated FFmpeg transcoding, and a
                 Flutter client for Android TV &amp; Apple TV</li>
-              <li>Grew it to <span data-stat="stars-suite">890+</span> GitHub stars and
-                <span data-stat="docker-pulls-long">600,000+</span> Docker pulls</li>
+              <li>Grew it to <span data-stat="stars-suite">${data.stats.starsSuite}</span> GitHub stars and
+                <span data-stat="docker-pulls-long">${data.stats.dockerPullsLong}</span> Docker pulls</li>
               <li>Run the full product lifecycle solo: releases, Docker distribution,
                 documentation site, and an actively-answered issue tracker</li>
             </ul>
@@ -268,7 +101,7 @@
           <h3>The m3u suite</h3>
           <p>
             Open source, self-hosted streaming tools spanning three languages and four
-            platforms — <span data-stat="docker-pulls-long">600,000+</span> Docker pulls
+            platforms — <span data-stat="docker-pulls-long">${data.stats.dockerPullsLong}</span> Docker pulls
             and a growing community, built and maintained solo.
           </p>
         </article>
@@ -398,23 +231,5 @@
           rel="noopener">Connect on LinkedIn ↗</a>
       </div>
     </section>
-
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p class="mono">© <span id="year">2026</span> Shaun Parkison</p>
-      <nav class="footer-links mono" aria-label="Footer">
-        <a href="/m3u-suite/">m3u suite</a>
-        <a href="/services/">services</a>
-        <a href="/resume/">resume</a>
-        <a href="https://github.com/sparkison" target="_blank" rel="noopener">github</a>
-        <a href="mailto:hello@sparkison.dev">email</a>
-      </nav>
-      <p class="mono footer-note">Hand-built. No frameworks, no trackers, just HTML &amp; CSS.</p>
-    </div>
-  </footer>
-
-  <script src="/main.js" defer></script>
-</body>
-</html>
+`,
+};

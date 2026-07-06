@@ -1,26 +1,26 @@
 #!/usr/bin/env node
 /**
- * Refreshes the hardcoded community stats across the site.
+ * Refreshes the live community stats (GitHub stars, Docker pulls) in
+ * site/data/site.mjs, then rebuilds every page so the new numbers show
+ * up everywhere they're referenced.
  *
- * Fetches live numbers from the GitHub and Docker Hub APIs, then rewrites the
- * text of every element carrying a data-stat attribute:
- *
- *   stars-all         total GitHub stars (sparkison + m3ue), floored to 50  → "900+"
- *   stars-suite       m3ue org GitHub stars, floored to 10                  → "890+"
- *   docker-pulls      Docker Hub pulls, compact                            → "600K+"
- *   docker-pulls-long Docker Hub pulls, long form                          → "600,000+"
+ *   starsAll         total GitHub stars (sparkison + m3ue), floored to 50  → "900+"
+ *   starsSuite       m3ue org GitHub stars, floored to 10                  → "890+"
+ *   dockerPulls      Docker Hub pulls, compact                             → "600K+"
+ *   dockerPullsLong  Docker Hub pulls, long form                           → "600,000+"
  *
  * Also bumps <lastmod> in sitemap.xml when anything changed.
  *
  * Usage: node scripts/update-stats.mjs [--dry-run]
  */
 
+import { execFileSync } from "node:child_process";
 import { readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
-const PAGES = ["index.html", "services/index.html", "m3u-suite/index.html", "resume/index.html"];
+const DATA_FILE = join(ROOT, "site/data/site.mjs");
 const DRY_RUN = process.argv.includes("--dry-run");
 
 async function getJSON(url) {
@@ -61,42 +61,36 @@ const [personalStars, orgStars, editorPulls, proxyPulls] = await Promise.all([
 
 const pulls = editorPulls + proxyPulls;
 const stats = {
-  "stars-all": `${floorTo(personalStars + orgStars, 50)}+`,
-  "stars-suite": `${floorTo(orgStars, 10)}+`,
-  "docker-pulls": compactPulls(pulls),
-  "docker-pulls-long": `${floorTo(pulls, 50_000).toLocaleString("en-US")}+`,
+  starsAll: `${floorTo(personalStars + orgStars, 50)}+`,
+  starsSuite: `${floorTo(orgStars, 10)}+`,
+  dockerPulls: compactPulls(pulls),
+  dockerPullsLong: `${floorTo(pulls, 50_000).toLocaleString("en-US")}+`,
 };
 
 console.log(`GitHub stars: ${personalStars + orgStars} (personal ${personalStars}, m3ue ${orgStars})`);
 console.log(`Docker pulls: ${pulls.toLocaleString("en-US")} (editor ${editorPulls.toLocaleString("en-US")}, proxy ${proxyPulls.toLocaleString("en-US")})`);
 console.log("Rendered:", stats, "\n");
 
-// ---- rewrite --------------------------------------------------------------
+// ---- rewrite site/data/site.mjs --------------------------------------------
 
-let anyChange = false;
-
-for (const page of PAGES) {
-  const file = join(ROOT, page);
-  const before = readFileSync(file, "utf8");
-  let after = before;
-
-  for (const [key, value] of Object.entries(stats)) {
-    after = after.replace(
-      new RegExp(`(<(\\w+)[^>]*\\bdata-stat="${key}"[^>]*>)[^<]*(</\\2>)`, "g"),
-      `$1${value}$3`
-    );
-  }
-
-  if (after !== before) {
-    anyChange = true;
-    if (!DRY_RUN) writeFileSync(file, after);
-    console.log(`${DRY_RUN ? "would update" : "updated"}  ${page}`);
-  } else {
-    console.log(`unchanged  ${page}`);
-  }
+const before = readFileSync(DATA_FILE, "utf8");
+let after = before;
+for (const [key, value] of Object.entries(stats)) {
+  after = after.replace(new RegExp(`(${key}:\\s*")[^"]*(")`), `$1${value}$2`);
 }
 
-if (anyChange && !DRY_RUN) {
+const changed = after !== before;
+
+if (changed) {
+  if (!DRY_RUN) writeFileSync(DATA_FILE, after);
+  console.log(`${DRY_RUN ? "would update" : "updated"}  site/data/site.mjs`);
+} else {
+  console.log("unchanged  site/data/site.mjs");
+}
+
+if (changed && !DRY_RUN) {
+  execFileSync("node", [join(ROOT, "scripts/build.mjs")], { stdio: "inherit" });
+
   const sitemapFile = join(ROOT, "sitemap.xml");
   const today = new Date().toISOString().slice(0, 10);
   writeFileSync(

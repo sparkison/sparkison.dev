@@ -5,23 +5,55 @@ Personal portfolio for **Shaun Parkison** — full stack developer and creator o
 
 ## Stack
 
-Zero-build static site: hand-written HTML, CSS, and a few lines of vanilla JS.
-No frameworks, no bundler, no dependencies — clone it and open `index.html`.
+A tiny build step over otherwise hand-written HTML/CSS/JS — no frameworks, no
+bundler, and zero npm dependencies (Node's built-in ESM + `fetch` do everything).
+The output is plain static HTML that deploys anywhere, including GitHub Pages.
+
+## How editing works
+
+**The files GitHub Pages serves (`index.html`, `services/index.html`, etc.) are
+generated — don't hand-edit them.** Edit the source instead, then rebuild:
+
+| Editing this... | ...changes |
+| --- | --- |
+| `site/data/site.mjs` | Anything site-wide: name, email, nav links, footer links, social URLs, stats |
+| `site/pages/*.mjs` | One page's title, meta description, JSON-LD, and body content |
+| `site/lib/layout.mjs` | The shared shell: `<head>` boilerplate, header/nav, footer |
+| `styles.css`, `main.js` | Styling and behavior — these are hand-written, not generated |
+
+After editing, regenerate the HTML:
+
+```sh
+npm run build
+```
+
+This reads `site/data/` + `site/pages/` through `site/lib/layout.mjs` and writes
+`index.html`, `services/index.html`, `m3u-suite/index.html`, `resume/index.html`,
+and `404.html`. Commit the generated files alongside your source changes — Pages
+serves whatever's committed, so the build output has to be part of the commit.
+
+Why this instead of hand-editing 5 near-duplicate files: changing the nav, the
+footer, the contact email, or a stat used to mean finding and fixing the same
+string in every file. Now it's one edit in `site/data/site.mjs` + `npm run build`.
 
 ## Structure
 
-| File | Purpose |
+| Path | Purpose |
 | --- | --- |
-| `index.html` | Homepage: hero, m3u suite showcase, stack, about, FAQ, contact |
-| `services/index.html` | Landing page for hiring companies & clients ("hire a full stack developer") |
-| `m3u-suite/index.html` | Landing page for the m3u suite (features, architecture, install FAQ) |
-| `resume/index.html` | Resume: experience, projects, skills, education (print-to-PDF friendly) |
-| `styles.css` | All styling (dark theme, custom properties, responsive) |
-| `main.js` | Progressive enhancement: scroll-reveal, mobile nav, footer year |
-| `404.html` | Not-found page |
+| `site/data/site.mjs` | Central site data (source of truth for shared content) |
+| `site/pages/*.mjs` | Per-page meta + JSON-LD + body content (source) |
+| `site/lib/layout.mjs` | Shared page shell renderer (source) |
+| `scripts/build.mjs` | Renders source → the HTML files below |
+| `scripts/update-stats.mjs` | Fetches live GitHub/Docker stats into `site.mjs`, then rebuilds |
+| `scripts/generate-og.mjs` | Rebuilds `og/og.svg` + `og.png` from `site.mjs` |
+| `index.html`, `services/`, `m3u-suite/`, `resume/`, `404.html` | **Generated** — deployed output |
+| `styles.css` | All styling (dark theme, custom properties, responsive) — hand-written |
+| `main.js` | Progressive enhancement: scroll-reveal, mobile nav, footer year — hand-written |
+| `og/og.svg` | Source for the social-share image (edit + `npm run og`, not `og.png` directly) |
+| `fonts/` | Self-hosted Space Grotesk + JetBrains Mono (variable, woff2, no CDN) |
 | `robots.txt` / `sitemap.xml` / `llms.txt` | Crawler + answer-engine directives |
 | `site.webmanifest` / `favicon.svg` / `apple-touch-icon.png` / `og.png` | Icons & social share image |
-| `scripts/update-stats.mjs` | Refreshes GitHub star / Docker pull stats across all pages |
+| `CNAME` | Custom domain for GitHub Pages |
 
 ## Local preview
 
@@ -35,23 +67,35 @@ python3 -m http.server 8080
 
 ## Keeping stats fresh
 
-The community stats (GitHub stars, Docker pulls) are hardcoded in the HTML but
-marked with `data-stat` attributes. To sync them with live numbers:
-
 ```sh
-node scripts/update-stats.mjs            # rewrites stats in place
-node scripts/update-stats.mjs --dry-run  # preview without writing
+npm run stats            # fetch live numbers, update site.mjs, rebuild
+npm run stats -- --dry-run   # preview without writing
 ```
 
-No dependencies or tokens needed — it hits the public GitHub and Docker Hub APIs,
-rounds the numbers down (911 → "900+"), and bumps `sitemap.xml`'s `lastmod` when
-anything changed. Run it before deploys, or wire it into CI on a schedule.
+No API tokens needed — it hits the public GitHub and Docker Hub APIs, rounds
+numbers down (911 → "900+"), writes them into `site/data/site.mjs`, rebuilds all
+pages, and bumps `sitemap.xml`'s `lastmod` if anything changed.
+
+## Regenerating the social-share image
+
+```sh
+npm run og
+```
+
+Requires `rsvg-convert` (`brew install librsvg` on macOS, `apt-get install
+librsvg2-bin` on Linux). Edit `site/data/site.mjs`'s `ogCard` field (or
+`og/og.svg` directly for layout changes) and re-run to update `og.png`.
 
 ## Deploying
 
-Deployable as-is to GitHub Pages, Cloudflare Pages, Netlify, or Vercel — no build
-step needed. If the domain ever changes, update the canonical URL, Open Graph URLs,
-JSON-LD `@id`s, `robots.txt`, and `sitemap.xml`.
+Static output, deployable to GitHub Pages, Cloudflare Pages, Netlify, or Vercel.
+For GitHub Pages: Settings → Pages → Deploy from branch → `master` / `(root)`.
+`CNAME` already points it at `sparkison.dev` — just set the DNS records at the
+registrar (4 A records + 4 AAAA records to GitHub's Pages IPs, see GitHub's
+custom-domain docs) and enable "Enforce HTTPS" once the domain verifies.
+
+If the domain ever changes: update `domain` in `site/data/site.mjs`, `CNAME`,
+`robots.txt`, and `sitemap.xml`, then `npm run build`.
 
 ## SEO checklist (already wired up)
 

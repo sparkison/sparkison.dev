@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2dd4bf"/>
+      <stop offset="0.55" stop-color="#60a5fa"/>
+      <stop offset="1" stop-color="#a78bfa"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="0.85" cy="0.05" r="0.7">
+      <stop offset="0" stop-color="#2dd4bf" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#2dd4bf" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="0.05" cy="0.95" r="0.7">
+      <stop offset="0" stop-color="#60a5fa" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#60a5fa" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse">
+      <path d="M44 0H0V44" fill="none" stroke="#94b4dc" stroke-opacity="0.07" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="#070b12"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="630" fill="url(#glow1)"/>
+  <rect width="1200" height="630" fill="url(#glow2)"/>
+
+  <!-- play mark (Material Symbols play_arrow, filled) -->
+  <rect x="96" y="96" width="88" height="88" rx="20" fill="none" stroke="url(#g)" stroke-width="4"/>
+  <g transform="translate(93 183.2) scale(0.09)">
+    <path fill="url(#g)" d="M320-273v-414q0-17 12-28.5t28-11.5q5 0 10.5 1.5T381-721l326 207q9 6 13.5 15t4.5 19q0 10-4.5 19T707-446L381-239q-5 3-10.5 4.5T360-233q-16 0-28-11.5T320-273Z"/>
+  </g>
+
+  <!-- text -->
+  <text x="96" y="286" font-family="Menlo, monospace" font-size="26" fill="#2dd4bf">// full stack developer · fort collins, co</text>
+  <text x="92" y="368" font-family="Helvetica Neue, Arial, sans-serif" font-size="72" font-weight="700" fill="#e7eef7" letter-spacing="-2">Shaun Parkison</text>
+  <text x="94" y="432" font-family="Helvetica Neue, Arial, sans-serif" font-size="36" font-weight="500" fill="#94a3b8">Creator of the m3u suite — editor · proxy · tv</text>
+
+  <!-- chips -->
+  <rect x="96" y="486" width="120.5" height="46" rx="23" fill="none" stroke="#94b4dc" stroke-opacity="0.25"/>
+  <text x="156.25" y="516" text-anchor="middle" font-family="Menlo, monospace" font-size="22" fill="#94a3b8">Laravel</text>
+  <rect x="230.5" y="486" width="109" height="46" rx="23" fill="none" stroke="#94b4dc" stroke-opacity="0.25"/>
+  <text x="285" y="516" text-anchor="middle" font-family="Menlo, monospace" font-size="22" fill="#94a3b8">Python</text>
+  <rect x="353.5" y="486" width="120.5" height="46" rx="23" fill="none" stroke="#94b4dc" stroke-opacity="0.25"/>
+  <text x="413.75" y="516" text-anchor="middle" font-family="Menlo, monospace" font-size="22" fill="#94a3b8">Flutter</text>
+  <rect x="488" y="486" width="97.5" height="46" rx="23" fill="none" stroke="#94b4dc" stroke-opacity="0.25"/>
+  <text x="536.75" y="516" text-anchor="middle" font-family="Menlo, monospace" font-size="22" fill="#94a3b8">React</text>
+
+  <text x="1104" y="560" text-anchor="end" font-family="Menlo, monospace" font-size="26" fill="#60a5fa">sparkison.dev</text>
+</svg>

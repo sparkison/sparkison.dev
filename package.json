@@ -1,0 +1,11 @@
+{
+  "name": "sparkison.dev",
+  "private": true,
+  "type": "module",
+  "description": "Source for sparkison.dev — a hand-built static site with a tiny zero-dependency build step.",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "stats": "node scripts/update-stats.mjs",
+    "og": "node scripts/generate-og.mjs"
+  }
+}

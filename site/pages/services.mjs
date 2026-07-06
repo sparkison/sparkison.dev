@@ -1,131 +1,13 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- Primary SEO -->
-  <title>Hire a Full Stack Developer — Laravel, Python &amp; Flutter | Shaun Parkison</title>
-  <meta name="description" content="Shaun Parkison is a senior full stack developer available for freelance projects, ongoing development, and full-time roles. Laravel and PHP back ends, Python services, React front ends, Flutter apps — remote from Fort Collins, CO.">
-  <meta name="author" content="Shaun Parkison">
-  <meta name="robots" content="index, follow, max-image-preview:large">
-  <link rel="canonical" href="https://sparkison.dev/services/">
-  <meta name="theme-color" content="#070b12">
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://sparkison.dev/services/">
-  <meta property="og:site_name" content="sparkison.dev">
-  <meta property="og:title" content="Hire a Full Stack Developer — Shaun Parkison">
-  <meta property="og:description" content="Freelance projects, ongoing development, and full-time roles. Laravel &amp; PHP back ends, Python services, React front ends, Flutter apps.">
-  <meta property="og:image" content="https://sparkison.dev/og.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Shaun Parkison — full stack developer, creator of the m3u suite">
-  <meta property="og:locale" content="en_US">
-
-  <!-- Twitter / X -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Hire a Full Stack Developer — Shaun Parkison">
-  <meta name="twitter:description" content="Freelance projects, ongoing development, and full-time roles. Laravel &amp; PHP back ends, Python services, React front ends, Flutter apps.">
-  <meta name="twitter:image" content="https://sparkison.dev/og.png">
-
-  <!-- Icons -->
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="manifest" href="/site.webmanifest">
-
-  <!-- Fonts (self-hosted, no CDN) -->
-  <link rel="preload" href="/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/jetbrains-mono.woff2" as="font" type="font/woff2" crossorigin>
-
-  <link rel="stylesheet" href="/styles.css">
-
-  <!-- Structured data -->
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebPage",
-      "@id": "https://sparkison.dev/services/#webpage",
-      "url": "https://sparkison.dev/services/",
-      "name": "Hire a Full Stack Developer — Laravel, Python & Flutter | Shaun Parkison",
-      "isPartOf": {
-        "@id": "https://sparkison.dev/#website"
-      },
-      "about": {
-        "@id": "https://sparkison.dev/#person"
-      },
-      "inLanguage": "en-US"
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://sparkison.dev/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Services",
-          "item": "https://sparkison.dev/services/"
-        }
-      ]
-    },
-    {
-      "@type": "Service",
-      "@id": "https://sparkison.dev/services/#service",
-      "serviceType": "Full stack web, mobile, and TV application development",
-      "provider": {
-        "@id": "https://sparkison.dev/#person"
-      },
-      "areaServed": "Remote — United States and worldwide",
-      "description": "Senior full stack development: Laravel and PHP back ends, Python services, React and Vue front ends, Flutter and React Native apps, streaming media systems, and e-commerce. Available as project builds, ongoing development, consulting, or full-time employment.",
-      "url": "https://sparkison.dev/services/"
-    }
-  ]
-}
-  </script>
-</head>
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
-
-  <div class="bg" aria-hidden="true">
-    <div class="bg-grid"></div>
-    <div class="bg-glow bg-glow-1"></div>
-    <div class="bg-glow bg-glow-2"></div>
-  </div>
-
-  <header class="site-header">
-    <nav class="nav container" aria-label="Primary">
-      <a class="brand" href="/" aria-label="sparkison.dev — home">
-        <span class="brand-mark" aria-hidden="true"><svg fill="currentColor" viewBox="0 -960 960 960"><path d="M320-273v-414q0-17 12-28.5t28-11.5q5 0 10.5 1.5T381-721l326 207q9 6 13.5 15t4.5 19q0 10-4.5 19T707-446L381-239q-5 3-10.5 4.5T360-233q-16 0-28-11.5T320-273Z"/></svg></span>sparkison<span class="brand-tld">.dev</span>
-      </a>
-      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">
-        <span></span><span></span>
-      </button>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="/#work">Work</a></li>
-        <li><a href="/m3u-suite/">m3u suite</a></li>
-        <li><a href="/services/" aria-current="page">Services</a></li>
-        <li><a href="/resume/">Resume</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li>
-          <a class="nav-cta" href="https://github.com/sparkison" target="_blank" rel="noopener">
-            <svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-            GitHub
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </header>
-
-  <main id="main">
-
+export default {
+  path: "/services/",
+  active: "services",
+  ogType: "website",
+  title: "Hire a Full Stack Developer — Laravel, Python &amp; Flutter | Shaun Parkison",
+  ogTitle: "Hire a Full Stack Developer — Shaun Parkison",
+  description: "Shaun Parkison is a senior full stack developer available for freelance projects, ongoing development, and full-time roles. Laravel and PHP back ends, Python services, React front ends, Flutter apps — remote from Fort Collins, CO.",
+  ogDescription: "Freelance projects, ongoing development, and full-time roles. Laravel &amp; PHP back ends, Python services, React front ends, Flutter apps.",
+  jsonLd: {"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://sparkison.dev/services/#webpage","url":"https://sparkison.dev/services/","name":"Hire a Full Stack Developer — Laravel, Python & Flutter | Shaun Parkison","isPartOf":{"@id":"https://sparkison.dev/#website"},"about":{"@id":"https://sparkison.dev/#person"},"inLanguage":"en-US"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sparkison.dev/"},{"@type":"ListItem","position":2,"name":"Services","item":"https://sparkison.dev/services/"}]},{"@type":"Service","@id":"https://sparkison.dev/services/#service","serviceType":"Full stack web, mobile, and TV application development","provider":{"@id":"https://sparkison.dev/#person"},"areaServed":"Remote — United States and worldwide","description":"Senior full stack development: Laravel and PHP back ends, Python services, React and Vue front ends, Flutter and React Native apps, streaming media systems, and e-commerce. Available as project builds, ongoing development, consulting, or full-time employment.","url":"https://sparkison.dev/services/"}]},
+  main: (data) => `
 <!-- ============ PAGE HERO ============ -->
     <section class="page-hero container">
       <ol class="breadcrumb mono">
@@ -301,8 +183,8 @@
         <h3 class="beyond-title">Why trust a stranger on the internet?</h3>
         <p>
           You don't have to — my work is public. The <a href="/m3u-suite/">m3u suite</a>
-          has <span data-stat="stars-suite">890+</span> GitHub stars,
-          <span data-stat="docker-pulls-long">600,000+</span> Docker pulls, an active
+          has <span data-stat="stars-suite">${data.stats.starsSuite}</span> GitHub stars,
+          <span data-stat="docker-pulls-long">${data.stats.dockerPullsLong}</span> Docker pulls, an active
           issue tracker I actually answer, release notes, and documentation. That's what
           working with me looks like:
           <a href="https://github.com/sparkison" target="_blank" rel="noopener">github.com/sparkison</a>.
@@ -323,23 +205,5 @@
         <a class="btn btn-ghost" href="https://github.com/sparkison" target="_blank" rel="noopener">@sparkison on GitHub ↗</a>
       </div>
     </section>
-
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p class="mono">© <span id="year">2026</span> Shaun Parkison</p>
-      <nav class="footer-links mono" aria-label="Footer">
-        <a href="/m3u-suite/">m3u suite</a>
-        <a href="/services/">services</a>
-        <a href="/resume/">resume</a>
-        <a href="https://github.com/sparkison" target="_blank" rel="noopener">github</a>
-        <a href="mailto:hello@sparkison.dev">email</a>
-      </nav>
-      <p class="mono footer-note">Hand-built. No frameworks, no trackers, just HTML &amp; CSS.</p>
-    </div>
-  </footer>
-
-  <script src="/main.js" defer></script>
-</body>
-</html>
+`,
+};
