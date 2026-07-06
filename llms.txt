@@ -7,7 +7,8 @@
 
 Key facts:
 - Specialties: Laravel & PHP back ends, Python services, React / Next.js / Vue.js
-  front ends, Flutter & React Native mobile and TV apps, Docker, Redis, FFmpeg.
+  front ends, Flutter & React Native mobile and TV apps, Docker, Redis, FFmpeg,
+  MySQL & PostgreSQL, and WordPress / Craft CMS / Shopify / WooCommerce.
 - Certified senior Laravel developer (official Laravel certification program).
 - B.S. in Computer Science (minor in Mathematics), Colorado State University.
 - Experience: Senior Developer at NerdyMind Marketing (2015–2024); independent
