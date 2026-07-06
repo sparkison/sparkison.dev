@@ -165,7 +165,9 @@ export default {
           <ul class="chip-list">
             <li>Flutter</li>
             <li>React Native</li>
+            <li>Android</li>
             <li>Android TV</li>
+            <li>iOS</li>
             <li>Apple TV</li>
           </ul>
         </div>
@@ -181,6 +183,7 @@ export default {
             <li>PostgreSQL</li>
             <li>CI/CD</li>
             <li>TDD</li>
+            <li>AIDD</li>
             <li>WebSockets &amp; queues</li>
             <li>FFmpeg</li>
           </ul>
