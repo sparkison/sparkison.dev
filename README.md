@@ -86,6 +86,29 @@ Requires `rsvg-convert` (`brew install librsvg` on macOS, `apt-get install
 librsvg2-bin` on Linux). Edit `site/data/site.mjs`'s `ogCard` field (or
 `og/og.svg` directly for layout changes) and re-run to update `og.png`.
 
+## Cache lifetime (Cloudflare)
+
+GitHub Pages doesn't support custom response headers, so if a Lighthouse/PageSpeed
+report flags "long cache lifetime" for `/fonts/*`, `/styles.css`, `/main.js`, etc.,
+fix it in Cloudflare instead (works because the zone is proxied — confirmed by
+Cloudflare's email-obfuscation script appearing on the page):
+
+**Cloudflare dashboard → Caching → Cache Rules → Create rule**
+
+| Field | Value |
+| --- | --- |
+| Rule name | Long cache for static assets |
+| When incoming requests match | `URI Path` ends with `.woff2`, `.css`, `.js`, `.svg`, `.png`, `.webmanifest` (or match `URI Path` starts with `/fonts/`) |
+| Then | Cache eligibility: Eligible for cache; Edge TTL: 1 year; Browser TTL: 1 year |
+
+This is safe for `/fonts/*` (the files never change) and for `styles.css`/`main.js`
+specifically *because* `npm run build` appends a content hash as a query string
+(`/styles.css?v=30292a7a`) — the URL changes automatically whenever either file's
+content changes, so a 1-year cache never serves stale CSS/JS after a deploy. Leave
+HTML pages and `og.png`/`favicon.svg`/`apple-touch-icon.png` off this rule (or on a
+short TTL) since those aren't cache-busted — after editing any of those, purge
+cache for the specific URL in Cloudflare (Caching → Configuration → Custom Purge).
+
 ## Deploying
 
 Static output, deployable to GitHub Pages, Cloudflare Pages, Netlify, or Vercel.

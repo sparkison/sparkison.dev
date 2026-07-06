@@ -6,7 +6,8 @@
  * Usage: node scripts/build.mjs
  */
 
-import { writeFileSync, mkdirSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { writeFileSync, mkdirSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -19,6 +20,18 @@ import resume from "../site/pages/resume.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 
+// Short content hash appended as a query string to /styles.css and /main.js
+// so a long, immutable Cache-Control (set at the CDN — see README) is safe:
+// the URL itself changes whenever either file's content changes.
+function hashOf(path) {
+  return createHash("sha256").update(readFileSync(join(ROOT, path))).digest("hex").slice(0, 8);
+}
+
+const assetVersion = {
+  css: hashOf("styles.css"),
+  js: hashOf("main.js"),
+};
+
 const OUTPUTS = [
   ["index.html", home],
   ["services/index.html", services],
@@ -27,12 +40,13 @@ const OUTPUTS = [
 ];
 
 for (const [outPath, page] of OUTPUTS) {
-  const html = renderPage({ ...page, main: page.main(site) }, site);
+  const html = renderPage({ ...page, main: page.main(site) }, site, assetVersion);
   const fullPath = join(ROOT, outPath);
   mkdirSync(dirname(fullPath), { recursive: true });
   writeFileSync(fullPath, html);
   console.log("built", outPath);
 }
 
-writeFileSync(join(ROOT, "404.html"), renderNotFound(site));
+writeFileSync(join(ROOT, "404.html"), renderNotFound(site, assetVersion));
 console.log("built 404.html");
+console.log("asset versions:", assetVersion);

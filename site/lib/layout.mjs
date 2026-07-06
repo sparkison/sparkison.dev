@@ -51,8 +51,9 @@ function renderFooter(data) {
   </footer>`;
 }
 
-function renderHead(page, data) {
+function renderHead(page, data, assetVersion) {
   const url = `${data.domain}${page.path}`;
+  const cssHref = assetVersion ? `/styles.css?v=${assetVersion.css}` : "/styles.css";
   const ogImage = page.ogImage ?? data.ogImage;
   const ogImageAlt = page.ogImageAlt ?? data.ogImageAlt;
 
@@ -102,11 +103,12 @@ function renderHead(page, data) {
   <link rel="preload" href="/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/jetbrains-mono.woff2" as="font" type="font/woff2" crossorigin>
 
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="${cssHref}">
 ${page.jsonLd ? `\n  <!-- Structured data -->\n  <script type="application/ld+json">\n${JSON.stringify(page.jsonLd, null, 2)}\n  </script>\n` : ""}</head>`;
 }
 
-export function renderNotFound(data) {
+export function renderNotFound(data, assetVersion) {
+  const cssHref = assetVersion ? `/styles.css?v=${assetVersion.css}` : "/styles.css";
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -118,7 +120,7 @@ export function renderNotFound(data) {
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/jetbrains-mono.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="${cssHref}">
 </head>
 <body>
   <div class="bg" aria-hidden="true">
@@ -138,12 +140,13 @@ export function renderNotFound(data) {
 `;
 }
 
-export function renderPage(page, data) {
-  const head = renderHead(page, data);
+export function renderPage(page, data, assetVersion) {
+  const head = renderHead(page, data, assetVersion);
   const nav = renderNav(data, page.active);
   const footer = renderFooter(data);
   const mainAttrs = page.mainClass ? ` class="${page.mainClass}"` : "";
   const brandHref = page.active === "home" ? "#top" : "/";
+  const jsSrc = assetVersion ? `/main.js?v=${assetVersion.js}` : "/main.js";
 
   return `<!doctype html>
 <html lang="en">
@@ -175,7 +178,7 @@ ${page.main}
 
   ${footer}
 
-  <script src="/main.js" defer></script>
+  <script src="${jsSrc}" defer></script>
 </body>
 </html>
 `;
