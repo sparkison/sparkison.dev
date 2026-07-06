@@ -1,7 +1,8 @@
 # sparkison.dev
-
 Personal portfolio for **Shaun Parkison** — full stack developer and creator of the
 [m3u suite](https://github.com/sparkison/m3u-editor) (m3u editor, m3u proxy, m3u tv).
+
+![card](./og.png)
 
 ## Stack
 
