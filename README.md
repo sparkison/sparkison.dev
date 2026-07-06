@@ -90,9 +90,7 @@ librsvg2-bin` on Linux). Edit `site/data/site.mjs`'s `ogCard` field (or
 
 Static output, deployable to GitHub Pages, Cloudflare Pages, Netlify, or Vercel.
 For GitHub Pages: Settings → Pages → Deploy from branch → `master` / `(root)`.
-`CNAME` already points it at `sparkison.dev` — just set the DNS records at the
-registrar (4 A records + 4 AAAA records to GitHub's Pages IPs, see GitHub's
-custom-domain docs) and enable "Enforce HTTPS" once the domain verifies.
+`CNAME` already points it at `sparkison.dev`
 
 If the domain ever changes: update `domain` in `site/data/site.mjs`, `CNAME`,
 `robots.txt`, and `sitemap.xml`, then `npm run build`.
