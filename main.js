@@ -61,32 +61,69 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").match
 
 document.querySelectorAll(".mock[data-carousel]").forEach((mock) => {
   const track = mock.querySelector(".mock-track");
-  const slides = Array.from(track.children);
-  if (slides.length <= 1) return;
+  const realSlides = Array.from(track.children);
+  if (realSlides.length <= 1) return;
 
+  const realCount = realSlides.length;
+
+  // Clone the first/last slide onto the opposite ends so every interaction
+  // mode (arrows, autoplay, drag/swipe) can scroll straight past the "edge"
+  // into a visually-identical clone, then get silently repositioned onto the
+  // real slide once the scroll settles — that's what makes it loop instead
+  // of snapping back or hitting a hard stop.
+  const firstClone = realSlides[0].cloneNode(true);
+  const lastClone = realSlides[realCount - 1].cloneNode(true);
+  for (const clone of [firstClone, lastClone]) {
+    clone.setAttribute("aria-hidden", "true");
+    clone.setAttribute("tabindex", "-1");
+  }
+  track.insertBefore(lastClone, realSlides[0]);
+  track.appendChild(firstClone);
+
+  const slides = Array.from(track.children); // [lastClone, ...real, firstClone]
   const dots = Array.from(mock.querySelectorAll(".mock-dot"));
   const prevBtn = mock.querySelector(".mock-arrow.prev");
   const nextBtn = mock.querySelector(".mock-arrow.next");
 
-  let current = 0;
+  let current = 1; // index into `slides`; 1..realCount are the real slides
   let autoplayTimer = null;
 
-  function setActive(index) {
-    current = (index + slides.length) % slides.length;
-    dots.forEach((d, i) => d.classList.toggle("is-active", i === current));
+  function realIndexOf(pos) {
+    if (pos <= 0) return realCount - 1;
+    if (pos >= realCount + 1) return 0;
+    return pos - 1;
   }
 
-  function goTo(index) {
-    setActive(index);
-    // Scroll only the track itself — never scrollIntoView, which can still
-    // nudge the page's vertical scroll even with block:"nearest".
-    track.scrollTo({ left: slides[current].offsetLeft, behavior: "smooth" });
+  function updateDots() {
+    const real = realIndexOf(current);
+    dots.forEach((d, i) => d.classList.toggle("is-active", i === real));
+  }
+
+  function goTo(pos, smooth = true) {
+    current = pos;
+    if (smooth) {
+      // Scroll only the track itself — never scrollIntoView, which can
+      // still nudge the page's vertical scroll even with block:"nearest".
+      track.scrollTo({ left: slides[current].offsetLeft, behavior: "smooth" });
+    } else {
+      track.scrollLeft = slides[current].offsetLeft;
+    }
+    updateDots();
+  }
+
+  // Once scrolling has been idle for a moment — whether that scroll came
+  // from an arrow/dot click, autoplay, or a manual drag/swipe — snap off a
+  // clone onto its real counterpart. Same landing position either way, so
+  // the reset is invisible.
+  function settleOnClone() {
+    if (current === 0) goTo(realCount, false);
+    else if (current === realCount + 1) goTo(1, false);
   }
 
   function syncFromScroll() {
     const trackRect = track.getBoundingClientRect();
     const center = trackRect.left + trackRect.width / 2;
-    let closest = 0;
+    let closest = current;
     let closestDist = Infinity;
     slides.forEach((slide, i) => {
       const r = slide.getBoundingClientRect();
@@ -96,7 +133,10 @@ document.querySelectorAll(".mock[data-carousel]").forEach((mock) => {
         closest = i;
       }
     });
-    if (closest !== current) setActive(closest);
+    if (closest !== current) {
+      current = closest;
+      updateDots();
+    }
   }
 
   function pauseAutoplay() {
@@ -112,7 +152,7 @@ document.querySelectorAll(".mock[data-carousel]").forEach((mock) => {
 
   dots.forEach((dot, i) => {
     dot.addEventListener("click", () => {
-      goTo(i);
+      goTo(i + 1);
       scheduleAutoplay();
     });
   });
@@ -127,9 +167,13 @@ document.querySelectorAll(".mock[data-carousel]").forEach((mock) => {
   });
 
   let scrollRAF;
+  let settleTimer;
   track.addEventListener("scroll", () => {
     cancelAnimationFrame(scrollRAF);
     scrollRAF = requestAnimationFrame(syncFromScroll);
+
+    clearTimeout(settleTimer);
+    settleTimer = setTimeout(settleOnClone, 120);
   });
 
   // Mouse drag-to-scroll (touch swipe already works natively via overflow-x + scroll-snap)
@@ -157,7 +201,7 @@ document.querySelectorAll(".mock[data-carousel]").forEach((mock) => {
   mock.addEventListener("touchstart", pauseAutoplay, { passive: true });
   mock.addEventListener("touchend", scheduleAutoplay);
 
-  setActive(0);
+  goTo(1, false);
   scheduleAutoplay();
 });
 
