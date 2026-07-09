@@ -114,13 +114,17 @@ document.querySelectorAll(".mock[data-carousel]").forEach((mock) => {
   // Once scrolling has been idle for a moment — whether that scroll came
   // from an arrow/dot click, autoplay, or a manual drag/swipe — snap off a
   // clone onto its real counterpart. Same landing position either way, so
-  // the reset is invisible.
+  // the reset is invisible. Restoring scroll-snap here too (rather than the
+  // instant mouseup restores) means it comes back only once we're already
+  // sitting exactly on a slide, so re-enabling it can't cut the drag-release
+  // animation short by force-snapping mid-flight.
   function settleOnClone() {
+    track.style.scrollSnapType = "";
     if (current === 0) goTo(realCount, false);
     else if (current === realCount + 1) goTo(1, false);
   }
 
-  function syncFromScroll() {
+  function closestSlideIndex() {
     const trackRect = track.getBoundingClientRect();
     const center = trackRect.left + trackRect.width / 2;
     let closest = current;
@@ -133,6 +137,11 @@ document.querySelectorAll(".mock[data-carousel]").forEach((mock) => {
         closest = i;
       }
     });
+    return closest;
+  }
+
+  function syncFromScroll() {
+    const closest = closestSlideIndex();
     if (closest !== current) {
       current = closest;
       updateDots();
@@ -185,11 +194,22 @@ document.querySelectorAll(".mock[data-carousel]").forEach((mock) => {
     dragging = true;
     startX = e.pageX;
     startScroll = track.scrollLeft;
+    // CSS scroll-snap fights a manually-assigned scrollLeft — with snap left
+    // on, the track barely appears to move under the cursor before jumping
+    // to the nearest slide. Turn snap off for the drag itself so it tracks
+    // the mouse 1:1, then explicitly animate to the nearest slide on
+    // release using the same smooth scrollTo the arrows/dots/autoplay use.
+    track.style.scrollSnapType = "none";
     pauseAutoplay();
   });
   window.addEventListener("mouseup", () => {
-    if (dragging) scheduleAutoplay();
+    if (!dragging) return;
     dragging = false;
+    // Snap stays off through this animation — settleOnClone() (fired once
+    // scrolling actually goes idle) is what turns it back on, so it can't
+    // race the transition and cut it short.
+    goTo(closestSlideIndex());
+    scheduleAutoplay();
   });
   window.addEventListener("mousemove", (e) => {
     if (!dragging) return;
