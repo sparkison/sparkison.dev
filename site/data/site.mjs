@@ -59,7 +59,7 @@ export default {
   // fetches live GitHub/Docker Hub numbers and rewrites these fields.
   stats: {
     starsAll: "900+",
-    starsSuite: "890+",
+    starsSuite: "900+",
     dockerPulls: "600K+",
     dockerPullsLong: "600,000+",
   },
