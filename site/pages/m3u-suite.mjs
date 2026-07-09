@@ -96,7 +96,6 @@ export default {
             <li>Secure credential storage</li>
           </ul>
           <p class="card-links mono">
-            <a href="/m3u-tv/">details ↗</a>
             <a href="https://github.com/m3ue/m3u-tv" target="_blank" rel="noopener">source ↗</a>
           </p>
         </article>

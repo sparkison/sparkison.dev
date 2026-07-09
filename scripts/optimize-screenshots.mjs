@@ -1,42 +1,119 @@
 #!/usr/bin/env node
 /**
- * Resizes + converts the raw m3u tv app screenshots (dropped in
- * screenshots/tv-app-screenshots/ as full-resolution PNGs) into lightweight
- * WebP files under m3u-tv/img/, which is what the showcase page actually
- * serves.
+ * Auto-discovers the M3U TV app screenshots and turns them into what the
+ * device-mockup carousels on /m3u-tv/ actually serve.
  *
- * To feature a new screenshot: drop the PNG in screenshots/tv-app-screenshots/,
- * add an entry to SHOTS below, then run this script.
+ * How to update screenshots:
+ *   - Add:    drop a PNG named `<category><n>.png` in screenshots/tv-app-screenshots/
+ *             (category is "desktop", "mobile", or "tv"; n controls order — gaps
+ *             are fine, e.g. desktop1, desktop2, desktop10).
+ *   - Remove: delete the PNG.
+ *   - Reorder: rename the numbers.
+ *   - Caption: add an entry to ALT_TEXT below, keyed by the filename without
+ *              extension (e.g. "desktop1"). Untagged shots get a generic
+ *              fallback alt — captions are optional, not required.
+ * Then run:
+ *   npm run screenshots   (this script — resizes, converts to WebP, writes
+ *                          the manifest at site/data/tv-app-shots.mjs)
+ *   npm run build         (regenerates the HTML with the new manifest)
  *
- * Usage: node scripts/optimize-screenshots.mjs
- * Requires: cwebp (macOS: `brew install webp`)
+ * Requires: cwebp (macOS: `brew install webp`), ImageMagick's `identify`
+ * (macOS: `brew install imagemagick`) for reading output dimensions.
  */
 
 import { execFileSync } from "node:child_process";
-import { mkdirSync } from "node:fs";
+import { mkdirSync, readdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const SRC_DIR = join(ROOT, "screenshots/tv-app-screenshots");
 const OUT_DIR = join(ROOT, "m3u-tv/img");
+const MANIFEST_PATH = join(ROOT, "site/data/tv-app-shots.mjs");
 
-const SHOTS = [
-  { src: "desktop-home.png", out: "home.webp", width: 1600 },
-  { src: "desktop-epg.png", out: "epg.webp", width: 1600 },
-  { src: "desktop-movie-details.png", out: "movie-details.webp", width: 1600 },
-  { src: "desktop-series.png", out: "series.webp", width: 1600 },
-  { src: "desktop-aio-streams.png", out: "aio-streams.webp", width: 1600 },
-  { src: "mobile-home.png", out: "mobile-home.webp", width: 700 },
-];
+// Target output width per category — height follows the source aspect ratio.
+const WIDTH_BY_CATEGORY = {
+  desktop: 1600,
+  tv: 1600,
+  mobile: 700,
+};
+
+// Optional hand-written captions, keyed by filename (no extension). Anything
+// not listed here gets a generic "<Category> screenshot N" fallback alt.
+const ALT_TEXT = {
+  desktop1: "M3U TV home screen with Continue Watching, Live TV, and Movies rows",
+  desktop2: "Live TV guide with search, favorites, and a full EPG",
+  desktop3: "Movie detail page with backdrop, synopsis, cast, and resume playback",
+  desktop4: "Series library with genre filters and ratings",
+  desktop5: "Series detail page with season tabs and episode list",
+  desktop6: "AIOStreams integration showing continue watching and favorites",
+  mobile1: "M3U TV home screen on a phone",
+  mobile2: "Live TV guide on a phone",
+  mobile3: "Series library on a phone",
+  mobile4: "Series detail on a phone",
+  mobile5: "AIOStreams integration on a phone",
+  tv1: "M3U TV home screen on the 10-foot TV interface",
+  tv2: "Series library on the 10-foot TV interface",
+  tv3: "Series detail on the 10-foot TV interface",
+};
+
+function identify(path) {
+  const out = execFileSync("magick", ["identify", "-format", "%w %h", path], { encoding: "utf8" });
+  const [width, height] = out.trim().split(" ").map(Number);
+  return { width, height };
+}
 
 mkdirSync(OUT_DIR, { recursive: true });
 
-for (const { src, out, width } of SHOTS) {
-  const srcPath = join(SRC_DIR, src);
-  const outPath = join(OUT_DIR, out);
-  execFileSync("cwebp", ["-q", "82", "-resize", String(width), "0", srcPath, "-o", outPath], {
-    stdio: ["ignore", "ignore", "inherit"],
-  });
-  console.log("wrote", `m3u-tv/img/${out}`);
+const files = readdirSync(SRC_DIR).filter((f) => /^[a-z]+\d+\.png$/i.test(f));
+const byCategory = {};
+
+for (const file of files) {
+  const [, category, num] = file.match(/^([a-z]+)(\d+)\.png$/i);
+  const key = category.toLowerCase();
+  if (!WIDTH_BY_CATEGORY[key]) {
+    console.warn(`skipping ${file} — unknown category "${category}" (expected desktop/mobile/tv)`);
+    continue;
+  }
+  (byCategory[key] ??= []).push({ file, num: Number(num) });
 }
+
+const manifest = {};
+
+for (const [category, items] of Object.entries(byCategory)) {
+  items.sort((a, b) => a.num - b.num);
+  manifest[category] = items.map(({ file, num }) => {
+    const base = file.replace(/\.png$/i, "");
+    const outFile = `${base}.webp`;
+    const srcPath = join(SRC_DIR, file);
+    const outPath = join(OUT_DIR, outFile);
+    execFileSync(
+      "cwebp",
+      ["-q", "82", "-resize", String(WIDTH_BY_CATEGORY[category]), "0", srcPath, "-o", outPath],
+      { stdio: ["ignore", "ignore", "inherit"] }
+    );
+    const { width, height } = identify(outPath);
+    const alt = ALT_TEXT[base] ?? `${category[0].toUpperCase()}${category.slice(1)} screenshot ${num}`;
+    console.log("wrote", `m3u-tv/img/${outFile}`, `(${width}x${height})`);
+    return { file: outFile, width, height, alt };
+  });
+}
+
+const body = Object.entries(manifest)
+  .map(([category, shots]) => `  ${category}: ${JSON.stringify(shots, null, 2).replace(/\n/g, "\n  ")},`)
+  .join("\n");
+
+writeFileSync(
+  MANIFEST_PATH,
+  `/**
+ * Auto-generated by scripts/optimize-screenshots.mjs — do not hand-edit.
+ * To change captions, edit ALT_TEXT in that script and re-run
+ * \`npm run screenshots\`. To add/remove/reorder screenshots, add/remove/rename
+ * files in screenshots/tv-app-screenshots/ and re-run the same command.
+ */
+export default {
+${body}
+};
+`
+);
+console.log("wrote", "site/data/tv-app-shots.mjs");

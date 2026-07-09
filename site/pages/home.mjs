@@ -96,14 +96,13 @@ export default {
               <span class="chip">Flutter</span><span class="chip">Dart</span><span class="chip">TV OS</span>
             </span>
           </div>
-          <h3><a href="/m3u-tv/">m3u tv</a></h3>
+          <h3><a href="https://github.com/m3ue/m3u-tv" target="_blank" rel="noopener">m3u tv</a></h3>
           <p>
             The cross-platform front end for the suite — a native-feeling player that
             brings your m3u editor library to Android TV, Apple TV, and mobile with
             secure credential storage.
           </p>
           <p class="card-links mono">
-            <a href="/m3u-tv/">details ↗</a>
             <a href="https://github.com/m3ue/m3u-tv" target="_blank" rel="noopener">source ↗</a>
           </p>
         </article>

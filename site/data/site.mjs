@@ -33,7 +33,6 @@ export default {
   nav: [
     { key: "work", label: "Work" },
     { key: "suite", label: "m3u suite", href: "/m3u-suite/" },
-    { key: "app", label: "Download", href: "/m3u-tv/" },
     { key: "services", label: "Services", href: "/services/" },
     { key: "resume", label: "Resume", href: "/resume/" },
     { key: "contact", label: "Contact" },

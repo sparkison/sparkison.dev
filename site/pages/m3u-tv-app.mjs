@@ -1,3 +1,6 @@
+import shots from "../data/tv-app-shots.mjs";
+import { renderDeviceCarousel } from "../lib/device-mock.mjs";
+
 export default {
   path: "/m3u-tv/",
   active: "app",
@@ -38,12 +41,7 @@ export default {
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
         "author": { "@id": "https://sparkison.dev/#person" },
         "downloadUrl": [data.tvApp.testflight, data.tvApp.playStore, data.tvApp.githubReleases],
-        "screenshot": [
-          "https://sparkison.dev/m3u-tv/img/home.webp",
-          "https://sparkison.dev/m3u-tv/img/epg.webp",
-          "https://sparkison.dev/m3u-tv/img/movie-details.webp",
-          "https://sparkison.dev/m3u-tv/img/series.webp",
-        ],
+        "screenshot": [...shots.desktop, ...shots.tv].map((s) => `https://sparkison.dev/m3u-tv/img/${s.file}`),
       },
       {
         "@type": "FAQPage",
@@ -62,7 +60,7 @@ export default {
             "name": "What do I need to use M3U TV?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "A running m3u editor server (or any Xtream-compatible source). Point the app at your server's URL and credentials and your Live TV, movies, and series library loads directly into the app.",
+              "text": "A running m3u editor server. Point the app at your server's URL and credentials and your Live TV, movies, and series library loads directly into the app.",
             },
           },
           {
@@ -120,16 +118,64 @@ export default {
         <div><dt class="mono">5</dt><dd>languages supported</dd></div>
         <div><dt class="mono">100%</dt><dd>free &amp; open source</dd></div>
       </dl>
+    </section>
 
-      <figure class="shot-hero reveal">
-        <img src="/m3u-tv/img/home.webp" width="1600" height="1088" alt="M3U TV home screen showing Continue Watching, Live TV, and Movies rows" loading="eager">
-      </figure>
+    <!-- ============ DOWNLOAD ============ -->
+    <section class="section container" id="download">
+      <p class="eyebrow mono reveal">// get it</p>
+      <h2 class="reveal">Available <span class="gradient-text">everywhere</span></h2>
+      <p class="section-lede reveal">
+        Free and open source. Pick your platform below.
+      </p>
+      <div class="download-cards">
+        <div class="download-card reveal">
+          <span class="card-icon" aria-hidden="true"><svg fill="currentColor" viewBox="0 -960 960 960"><path d="M280-40q-33 0-56.5-23.5T200-120v-720q0-33 23.5-56.5T280-920h400q33 0 56.5 23.5T760-840v720q0 33-23.5 56.5T680-40H280Zm0-200v120h400v-120H280Zm200 100q17 0 28.5-11.5T520-180q0-17-11.5-28.5T480-220q-17 0-28.5 11.5T440-180q0 17 11.5 28.5T480-140ZM280-320h400v-400H280v400Zm0-480h400v-40H280v40Zm0 560v120-120Zm0-560v-40 40Z"/></svg></span>
+          <h3>iOS, Apple TV &amp; macOS</h3>
+          <p>Public beta via TestFlight</p>
+          <a class="btn btn-primary" href="${data.tvApp.testflight}" target="_blank" rel="noopener">Join the beta ↗</a>
+        </div>
+        <div class="download-card reveal">
+          <span class="card-icon" aria-hidden="true"><svg fill="currentColor" viewBox="0 -960 960 960"><path d="M40-240q9-107 65.5-197T256-580l-74-128q-6-9-3-19t13-15q8-5 18-2t16 12l74 128q86-36 180-36t180 36l74-128q6-9 16-12t18 2q10 5 13 15t-3 19l-74 128q94 53 150.5 143T920-240H40Zm240-110q21 0 35.5-14.5T330-400q0-21-14.5-35.5T280-450q-21 0-35.5 14.5T230-400q0 21 14.5 35.5T280-350Zm400 0q21 0 35.5-14.5T730-400q0-21-14.5-35.5T680-450q-21 0-35.5 14.5T630-400q0 21 14.5 35.5T680-350Z"/></svg></span>
+          <h3>Android &amp; Android TV</h3>
+          <p>Available now on Google Play</p>
+          <a class="btn btn-primary" href="${data.tvApp.playStore}" target="_blank" rel="noopener">Get it on Google Play ↗</a>
+        </div>
+        <div class="download-card reveal">
+          <span class="card-icon" aria-hidden="true"><svg fill="currentColor" viewBox="0 -960 960 960"><path d="M80-120q-17 0-28.5-11.5T40-160q0-17 11.5-28.5T80-200h800q17 0 28.5 11.5T920-160q0 17-11.5 28.5T880-120H80Zm80-120q-33 0-56.5-23.5T80-320v-440q0-33 23.5-56.5T160-840h640q33 0 56.5 23.5T880-760v440q0 33-23.5 56.5T800-240H160Zm0-80h640v-440H160v440Zm0 0v-440 440Z"/></svg></span>
+          <h3>Linux &amp; Windows</h3>
+          <p>Desktop builds via GitHub Releases</p>
+          <a class="btn btn-primary" href="${data.tvApp.githubReleases}" target="_blank" rel="noopener">See releases ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SCREENSHOTS ============ -->
+    <section class="section container" id="screenshots">
+      <p class="eyebrow mono reveal">// see it in action</p>
+      <h2 class="reveal">On every <span class="gradient-text">screen</span></h2>
+      <p class="section-lede reveal">Drag, swipe, or just watch — each preview cycles through the app on its own.</p>
+      <div class="devices-row">
+        <div class="device-col reveal">
+          <p class="device-label">On your laptop</p>
+          ${renderDeviceCarousel({ id: "hero-laptop", kind: "laptop", shots: shots.desktop })}
+        </div>
+        <div class="device-col reveal">
+          <p class="device-label">In your pocket</p>
+          ${renderDeviceCarousel({ id: "mobile-shots", kind: "phone", shots: shots.mobile })}
+        </div>
+      </div>
+      <div class="devices-row">
+        <div class="device-col reveal">
+          <p class="device-label">On your TV</p>
+          ${renderDeviceCarousel({ id: "tv-shots", kind: "tv", shots: shots.tv })}
+        </div>
+      </div>
     </section>
 
     <!-- ============ FEATURES ============ -->
     <section class="section container" id="features">
       <p class="eyebrow mono reveal">// what's inside</p>
-      <h2 class="reveal">Built for <span class="gradient-text">watching, not fiddling</span></h2>
+      <h2 class="reveal">Built for <span class="gradient-text">watching</span></h2>
       <div class="cards">
         <article class="card reveal">
           <div class="card-top">
@@ -194,62 +240,6 @@ export default {
       </div>
     </section>
 
-    <!-- ============ SCREENSHOTS ============ -->
-    <section class="section container" id="screenshots">
-      <p class="eyebrow mono reveal">// see it in action</p>
-      <h2 class="reveal">A closer <span class="gradient-text">look</span></h2>
-      <div class="shot-grid">
-        <figure class="shot reveal">
-          <img src="/m3u-tv/img/epg.webp" width="1600" height="1088" alt="Live TV guide with channel search, category filters, and up-next program info" loading="lazy">
-          <figcaption>Live TV with search, favorites, and a full EPG</figcaption>
-        </figure>
-        <figure class="shot reveal">
-          <img src="/m3u-tv/img/movie-details.webp" width="1600" height="1088" alt="Movie detail page with backdrop, synopsis, cast, and resume playback" loading="lazy">
-          <figcaption>Movie details — synopsis, cast, and resume-from-here</figcaption>
-        </figure>
-        <figure class="shot reveal">
-          <img src="/m3u-tv/img/series.webp" width="1600" height="1088" alt="Series library grid with genre filters and ratings" loading="lazy">
-          <figcaption>Series library with genre filters</figcaption>
-        </figure>
-        <figure class="shot reveal">
-          <img src="/m3u-tv/img/aio-streams.webp" width="1600" height="1088" alt="AIOStreams integration showing continue watching and favorites" loading="lazy">
-          <figcaption>AIOStreams integration alongside your own library</figcaption>
-        </figure>
-      </div>
-      <div class="shot reveal shot-mobile-wrap" style="margin-top:1.25rem;">
-        <img src="/m3u-tv/img/mobile-home.webp" width="700" height="1522" alt="M3U TV running on a phone, showing the same home screen as desktop" loading="lazy">
-      </div>
-    </section>
-
-    <!-- ============ DOWNLOAD ============ -->
-    <section class="section container" id="download">
-      <p class="eyebrow mono reveal">// get it</p>
-      <h2 class="reveal">Available <span class="gradient-text">everywhere</span></h2>
-      <p class="section-lede reveal">
-        Free and open source. Pick your platform below.
-      </p>
-      <div class="download-cards">
-        <div class="download-card reveal">
-          <span class="card-icon" aria-hidden="true"><svg fill="currentColor" viewBox="0 -960 960 960"><path d="M280-40q-33 0-56.5-23.5T200-120v-720q0-33 23.5-56.5T280-920h400q33 0 56.5 23.5T760-840v720q0 33-23.5 56.5T680-40H280Zm0-200v120h400v-120H280Zm200 100q17 0 28.5-11.5T520-180q0-17-11.5-28.5T480-220q-17 0-28.5 11.5T440-180q0 17 11.5 28.5T480-140ZM280-320h400v-400H280v400Zm0-480h400v-40H280v40Zm0 560v120-120Zm0-560v-40 40Z"/></svg></span>
-          <h3>iOS, Apple TV &amp; macOS</h3>
-          <p>Public beta via TestFlight</p>
-          <a class="btn btn-primary" href="${data.tvApp.testflight}" target="_blank" rel="noopener">Join the beta ↗</a>
-        </div>
-        <div class="download-card reveal">
-          <span class="card-icon" aria-hidden="true"><svg fill="currentColor" viewBox="0 -960 960 960"><path d="M40-240q9-107 65.5-197T256-580l-74-128q-6-9-3-19t13-15q8-5 18-2t16 12l74 128q86-36 180-36t180 36l74-128q6-9 16-12t18 2q10 5 13 15t-3 19l-74 128q94 53 150.5 143T920-240H40Zm240-110q21 0 35.5-14.5T330-400q0-21-14.5-35.5T280-450q-21 0-35.5 14.5T230-400q0 21 14.5 35.5T280-350Zm400 0q21 0 35.5-14.5T730-400q0-21-14.5-35.5T680-450q-21 0-35.5 14.5T630-400q0 21 14.5 35.5T680-350Z"/></svg></span>
-          <h3>Android &amp; Android TV</h3>
-          <p>Available now on Google Play</p>
-          <a class="btn btn-primary" href="${data.tvApp.playStore}" target="_blank" rel="noopener">Get it on Google Play ↗</a>
-        </div>
-        <div class="download-card reveal">
-          <span class="card-icon" aria-hidden="true"><svg fill="currentColor" viewBox="0 -960 960 960"><path d="M80-120q-17 0-28.5-11.5T40-160q0-17 11.5-28.5T80-200h800q17 0 28.5 11.5T920-160q0 17-11.5 28.5T880-120H80Zm80-120q-33 0-56.5-23.5T80-320v-440q0-33 23.5-56.5T160-840h640q33 0 56.5 23.5T880-760v440q0 33-23.5 56.5T800-240H160Zm0-80h640v-440H160v440Zm0 0v-440 440Z"/></svg></span>
-          <h3>Linux &amp; Windows</h3>
-          <p>Desktop builds via GitHub Releases</p>
-          <a class="btn btn-primary" href="${data.tvApp.githubReleases}" target="_blank" rel="noopener">See releases ↗</a>
-        </div>
-      </div>
-    </section>
-
     <!-- ============ FAQ ============ -->
     <section class="section container" id="faq">
       <p class="eyebrow mono reveal">// faq</p>
@@ -265,8 +255,7 @@ export default {
         <details class="faq-item reveal">
           <summary>What do I need to use it?</summary>
           <p>
-            A running <a href="/m3u-suite/">m3u editor</a> server (or any
-            Xtream-compatible source). Point the app at your server's URL and
+            A running <a href="/m3u-suite/">m3u editor</a> server. Point the app at your server's URL and
             credentials and your Live TV, movies, and series library loads right in.
           </p>
         </details>

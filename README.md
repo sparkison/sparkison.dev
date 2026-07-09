@@ -44,16 +44,18 @@ string in every file. Now it's one edit in `site/data/site.mjs` + `npm run build
 | `site/data/site.mjs` | Central site data (source of truth for shared content) |
 | `site/pages/*.mjs` | Per-page meta + JSON-LD + body content (source) |
 | `site/lib/layout.mjs` | Shared page shell renderer (source) |
+| `site/lib/device-mock.mjs` | Renders the laptop/phone/TV screenshot carousels (source) |
+| `site/data/tv-app-shots.mjs` | **Generated** — screenshot manifest, don't hand-edit (see below) |
 | `scripts/build.mjs` | Renders source → the HTML files below |
 | `scripts/update-stats.mjs` | Fetches live GitHub/Docker stats into `site.mjs`, then rebuilds |
 | `scripts/generate-og.mjs` | Rebuilds `og/og.svg` + `og.png` from `site.mjs` |
-| `scripts/optimize-screenshots.mjs` | Resizes/converts raw app screenshots to WebP for `m3u-tv/img/` |
+| `scripts/optimize-screenshots.mjs` | Converts raw app screenshots to WebP + writes `tv-app-shots.mjs` |
 | `index.html`, `services/`, `m3u-suite/`, `m3u-tv/`, `resume/`, `404.html` | **Generated** — deployed output |
 | `styles.css` | All styling (dark theme, custom properties, responsive) — hand-written |
-| `main.js` | Progressive enhancement: scroll-reveal, mobile nav, footer year — hand-written |
+| `main.js` | Progressive enhancement: scroll-reveal, mobile nav, footer year, screenshot carousels — hand-written |
 | `og/og.svg` | Source for the social-share image (edit + `npm run og`, not `og.png` directly) |
 | `m3u-tv/img/*.webp` | Optimized screenshots served on the app page — regenerate via `npm run screenshots`, don't hand-edit |
-| `screenshots/tv-app-screenshots/` | Raw, full-resolution source screenshots (not served directly) |
+| `screenshots/tv-app-screenshots/` | Raw, full-resolution source screenshots, named `desktop1.png`/`mobile1.png`/`tv1.png`/etc. |
 | `fonts/` | Self-hosted Space Grotesk + JetBrains Mono (variable, woff2, no CDN) |
 | `robots.txt` / `sitemap.xml` / `llms.txt` | Crawler + answer-engine directives |
 | `site.webmanifest` / `favicon.svg` / `apple-touch-icon.png` / `og.png` | Icons & social share image |
@@ -92,17 +94,33 @@ librsvg2-bin` on Linux). Edit `site/data/site.mjs`'s `ogCard` field (or
 
 ## Updating M3U TV app screenshots
 
-Drop new full-resolution PNGs in `screenshots/tv-app-screenshots/`, add an
-entry to the `SHOTS` list in `scripts/optimize-screenshots.mjs`, then:
+The `/m3u-tv/` page shows three device-mockup carousels (laptop, phone, TV),
+each auto-populated from whatever's in `screenshots/tv-app-screenshots/` —
+no page-module edits needed for the common cases:
+
+- **Add a screenshot**: drop a PNG named `<category><n>.png` in
+  `screenshots/tv-app-screenshots/`, where category is `desktop`, `mobile`,
+  or `tv` and `n` controls its order in that carousel (gaps are fine —
+  `desktop1`, `desktop2`, `desktop10`).
+- **Remove one**: delete the PNG.
+- **Reorder**: rename the numbers.
+- **Caption it**: add an entry to `ALT_TEXT` in
+  `scripts/optimize-screenshots.mjs`, keyed by filename without the
+  extension (e.g. `"desktop7"`). Uncaptioned shots get a generic fallback
+  alt ("Desktop screenshot 7") — captions are optional, not required.
+
+Then regenerate:
 
 ```sh
-npm run screenshots
+npm run screenshots   # resize + convert to WebP, write site/data/tv-app-shots.mjs
+npm run build          # regenerate the HTML with the updated manifest
 ```
 
-Requires `cwebp` (`brew install webp` on macOS). This resizes and converts to
-WebP under `m3u-tv/img/` — the only files the app showcase page actually
-serves. The raw PNGs in `screenshots/` are the source; don't hand-edit the
-`.webp` output.
+Requires `cwebp` (`brew install webp`) and ImageMagick's `identify`
+(`brew install imagemagick`). `site/data/tv-app-shots.mjs` is generated —
+don't hand-edit it; edit the script or the source screenshots instead. The
+raw PNGs in `screenshots/` are the source; the `.webp` files under
+`m3u-tv/img/` are what the page actually serves.
 
 ## Cache lifetime (Cloudflare)
 
