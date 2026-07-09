@@ -16,6 +16,7 @@ import { renderPage, renderNotFound } from "../site/lib/layout.mjs";
 import home from "../site/pages/home.mjs";
 import services from "../site/pages/services.mjs";
 import m3uSuite from "../site/pages/m3u-suite.mjs";
+import m3uTvApp from "../site/pages/m3u-tv-app.mjs";
 import resume from "../site/pages/resume.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -36,11 +37,13 @@ const OUTPUTS = [
   ["index.html", home],
   ["services/index.html", services],
   ["m3u-suite/index.html", m3uSuite],
+  ["m3u-tv/index.html", m3uTvApp],
   ["resume/index.html", resume],
 ];
 
 for (const [outPath, page] of OUTPUTS) {
-  const html = renderPage({ ...page, main: page.main(site) }, site, assetVersion);
+  const jsonLd = typeof page.jsonLd === "function" ? page.jsonLd(site) : page.jsonLd;
+  const html = renderPage({ ...page, jsonLd, main: page.main(site) }, site, assetVersion);
   const fullPath = join(ROOT, outPath);
   mkdirSync(dirname(fullPath), { recursive: true });
   writeFileSync(fullPath, html);

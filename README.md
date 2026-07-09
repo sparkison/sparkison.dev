@@ -47,10 +47,13 @@ string in every file. Now it's one edit in `site/data/site.mjs` + `npm run build
 | `scripts/build.mjs` | Renders source → the HTML files below |
 | `scripts/update-stats.mjs` | Fetches live GitHub/Docker stats into `site.mjs`, then rebuilds |
 | `scripts/generate-og.mjs` | Rebuilds `og/og.svg` + `og.png` from `site.mjs` |
-| `index.html`, `services/`, `m3u-suite/`, `resume/`, `404.html` | **Generated** — deployed output |
+| `scripts/optimize-screenshots.mjs` | Resizes/converts raw app screenshots to WebP for `m3u-tv/img/` |
+| `index.html`, `services/`, `m3u-suite/`, `m3u-tv/`, `resume/`, `404.html` | **Generated** — deployed output |
 | `styles.css` | All styling (dark theme, custom properties, responsive) — hand-written |
 | `main.js` | Progressive enhancement: scroll-reveal, mobile nav, footer year — hand-written |
 | `og/og.svg` | Source for the social-share image (edit + `npm run og`, not `og.png` directly) |
+| `m3u-tv/img/*.webp` | Optimized screenshots served on the app page — regenerate via `npm run screenshots`, don't hand-edit |
+| `screenshots/tv-app-screenshots/` | Raw, full-resolution source screenshots (not served directly) |
 | `fonts/` | Self-hosted Space Grotesk + JetBrains Mono (variable, woff2, no CDN) |
 | `robots.txt` / `sitemap.xml` / `llms.txt` | Crawler + answer-engine directives |
 | `site.webmanifest` / `favicon.svg` / `apple-touch-icon.png` / `og.png` | Icons & social share image |
@@ -86,6 +89,20 @@ npm run og
 Requires `rsvg-convert` (`brew install librsvg` on macOS, `apt-get install
 librsvg2-bin` on Linux). Edit `site/data/site.mjs`'s `ogCard` field (or
 `og/og.svg` directly for layout changes) and re-run to update `og.png`.
+
+## Updating M3U TV app screenshots
+
+Drop new full-resolution PNGs in `screenshots/tv-app-screenshots/`, add an
+entry to the `SHOTS` list in `scripts/optimize-screenshots.mjs`, then:
+
+```sh
+npm run screenshots
+```
+
+Requires `cwebp` (`brew install webp` on macOS). This resizes and converts to
+WebP under `m3u-tv/img/` — the only files the app showcase page actually
+serves. The raw PNGs in `screenshots/` are the source; don't hand-edit the
+`.webp` output.
 
 ## Cache lifetime (Cloudflare)
 

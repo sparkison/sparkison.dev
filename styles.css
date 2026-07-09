@@ -60,6 +60,7 @@ body {
 }
 
 .mono { font-family: var(--font-mono); }
+.footer-note { text-align: center; width: 100%; }
 
 /* ---------- background decoration ---------- */
 
@@ -667,6 +668,83 @@ button.btn {
 
 .step-list h3 { font-size: 1.1rem; margin-bottom: 0.25rem; }
 .step-list p { color: var(--muted); font-size: 0.98rem; }
+
+/* ---------- app download cards ---------- */
+
+.download-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+
+.download-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding: 1.6rem;
+  background: linear-gradient(160deg, var(--surface), var(--surface-2));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  text-align: center;
+  align-items: center;
+}
+
+.download-card .card-icon { margin: 0; }
+
+.download-card h3 { font-size: 1.05rem; }
+
+.download-card p {
+  color: var(--muted);
+  font-size: 0.88rem;
+  margin-top: -0.4rem;
+}
+
+/* ---------- screenshot gallery ---------- */
+
+.shot-hero {
+  margin-top: 2.75rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(2, 8, 20, 0.5);
+}
+
+.shot-hero img { display: block; width: 100%; height: auto; }
+
+.shot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+
+.shot {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: linear-gradient(160deg, var(--surface), var(--surface-2));
+}
+
+.shot img { display: block; width: 100%; height: auto; }
+
+.shot figcaption {
+  padding: 0.85rem 1.1rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.shot-grid .shot:first-child {
+  grid-column: 1 / -1;
+}
+
+.shot-mobile-wrap {
+  display: flex;
+  justify-content: center;
+  background: var(--bg);
+}
+
+.shot-mobile-wrap img { max-width: 260px; }
 
 /* ---------- resume ---------- */
 

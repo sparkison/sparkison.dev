@@ -23,10 +23,11 @@ Key facts:
 - [Home](https://sparkison.dev/): who Shaun is, featured work, tech stack, FAQ, contact
 - [Services](https://sparkison.dev/services/): what he builds, how he works, engagement types (project builds, ongoing development, consulting & audits, full-time roles)
 - [m3u suite](https://sparkison.dev/m3u-suite/): overview of the suite, features per app, architecture, install FAQ
+- [M3U TV app](https://sparkison.dev/m3u-tv/): the suite's cross-platform client — features, screenshots, download links (TestFlight, Google Play, GitHub Releases), FAQ
 - [Resume](https://sparkison.dev/resume/): work experience, selected projects, skills, education & certification
 
 ## Projects
 
 - [m3u editor](https://github.com/sparkison/m3u-editor): self-hosted IPTV playlist manager — EPG management (XMLTV, Schedules Direct), Xtream API output, .strm sync, post-processing automation. Docs: https://m3ue.sparkison.dev/
 - [m3u proxy](https://github.com/sparkison/m3u-proxy): high-performance streaming proxy — failover, management API, hardware-accelerated FFmpeg transcoding.
-- [m3u tv](https://github.com/m3ue/m3u-tv): cross-platform Flutter client for Android TV, Apple TV, and mobile.
+- [m3u tv](https://github.com/m3ue/m3u-tv): cross-platform Flutter client for iOS, Apple TV, Android, Android TV, macOS, Linux, and Windows. Live TV with EPG, movies/series with Trakt sync, AIOStreams support. Free — TestFlight beta (iOS/tvOS/macOS), Google Play (Android/Android TV), GitHub Releases (Linux/Windows).

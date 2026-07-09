@@ -33,6 +33,7 @@ export default {
   nav: [
     { key: "work", label: "Work" },
     { key: "suite", label: "m3u suite", href: "/m3u-suite/" },
+    { key: "app", label: "Download", href: "/m3u-tv/" },
     { key: "services", label: "Services", href: "/services/" },
     { key: "resume", label: "Resume", href: "/resume/" },
     { key: "contact", label: "Contact" },
@@ -40,11 +41,20 @@ export default {
 
   footerLinks: [
     { label: "m3u suite", href: "/m3u-suite/" },
+    { label: "m3u tv app", href: "/m3u-tv/" },
     { label: "services", href: "/services/" },
     { label: "resume", href: "/resume/" },
     { label: "github", href: "https://github.com/sparkison", external: true },
     { label: "email", href: "mailto:hello@sparkison.dev" },
   ],
+
+  // Store/release links for the m3u tv app — edit here, not in site/pages/.
+  tvApp: {
+    repo: "https://github.com/m3ue/m3u-tv",
+    testflight: "https://testflight.apple.com/join/hqJYVsJr",
+    playStore: "https://play.google.com/store/apps/details?id=dev.sparkison.tv",
+    githubReleases: "https://github.com/m3ue/m3u-tv/releases",
+  },
 
   // Kept in sync with `npm run stats` (scripts/update-stats.mjs), which
   // fetches live GitHub/Docker Hub numbers and rewrites these fields.

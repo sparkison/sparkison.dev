@@ -6,6 +6,7 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "stats": "node scripts/update-stats.mjs",
-    "og": "node scripts/generate-og.mjs"
+    "og": "node scripts/generate-og.mjs",
+    "screenshots": "node scripts/optimize-screenshots.mjs"
   }
 }
