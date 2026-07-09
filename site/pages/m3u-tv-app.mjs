@@ -2,7 +2,7 @@ import shots from "../data/tv-app-shots.mjs";
 import { renderDeviceCarousel } from "../lib/device-mock.mjs";
 
 export default {
-  path: "/m3u-tv/",
+  path: "/m3u-suite/m3u-tv/",
   active: "app",
   ogType: "website",
   title: "M3U TV — Watch Your IPTV Library on Any Screen | Shaun Parkison",
@@ -15,8 +15,8 @@ export default {
     "@graph": [
       {
         "@type": "WebPage",
-        "@id": "https://sparkison.dev/m3u-tv/#webpage",
-        "url": "https://sparkison.dev/m3u-tv/",
+        "@id": "https://sparkison.dev/m3u-suite/m3u-tv/#webpage",
+        "url": "https://sparkison.dev/m3u-suite/m3u-tv/",
         "name": "M3U TV — Watch Your IPTV Library on Any Screen",
         "isPartOf": { "@id": "https://sparkison.dev/#website" },
         "author": { "@id": "https://sparkison.dev/#person" },
@@ -27,25 +27,25 @@ export default {
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sparkison.dev/" },
           { "@type": "ListItem", "position": 2, "name": "m3u suite", "item": "https://sparkison.dev/m3u-suite/" },
-          { "@type": "ListItem", "position": 3, "name": "M3U TV", "item": "https://sparkison.dev/m3u-tv/" },
+          { "@type": "ListItem", "position": 3, "name": "M3U TV", "item": "https://sparkison.dev/m3u-suite/m3u-tv/" },
         ],
       },
       {
         "@type": "SoftwareApplication",
         "@id": "https://github.com/m3ue/m3u-tv#app",
         "name": "M3U TV",
-        "url": "https://sparkison.dev/m3u-tv/",
+        "url": "https://sparkison.dev/m3u-suite/m3u-tv/",
         "applicationCategory": "MultimediaApplication",
         "operatingSystem": "iOS, tvOS, Android, Android TV, macOS, Linux, Windows",
         "description": "Cross-platform client for the m3u suite — Live TV with EPG, movies and series with Trakt sync, and AIOStreams support.",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
         "author": { "@id": "https://sparkison.dev/#person" },
         "downloadUrl": [data.tvApp.testflight, data.tvApp.playStore, data.tvApp.githubReleases],
-        "screenshot": [...shots.desktop, ...shots.tv].map((s) => `https://sparkison.dev/m3u-tv/img/${s.file}`),
+        "screenshot": [...shots.desktop, ...shots.tv].map((s) => `https://sparkison.dev/m3u-suite/m3u-tv/img/${s.file}`),
       },
       {
         "@type": "FAQPage",
-        "@id": "https://sparkison.dev/m3u-tv/#faq",
+        "@id": "https://sparkison.dev/m3u-suite/m3u-tv/#faq",
         "mainEntity": [
           {
             "@type": "Question",
@@ -111,7 +111,8 @@ export default {
       </p>
       <div class="hero-actions reveal">
         <a class="btn btn-primary" href="${data.tvApp.testflight}" target="_blank" rel="noopener">Join the Apple beta ↗</a>
-        <a class="btn btn-ghost" href="${data.tvApp.playStore}" target="_blank" rel="noopener">Get it on Google Play ↗</a>
+        <a class="btn btn-primary" href="${data.tvApp.playStore}" target="_blank" rel="noopener">Get it on Google Play ↗</a>
+        <a class="btn btn-ghost" href="${data.tvApp.githubReleases}" target="_blank" rel="noopener">Download from GitHub ↗</a>
       </div>
       <dl class="hero-stats reveal">
         <div><dt class="mono">7</dt><dd>platforms, one app</dd></div>

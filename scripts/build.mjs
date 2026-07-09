@@ -37,7 +37,7 @@ const OUTPUTS = [
   ["index.html", home],
   ["services/index.html", services],
   ["m3u-suite/index.html", m3uSuite],
-  ["m3u-tv/index.html", m3uTvApp],
+  ["m3u-suite/m3u-tv/index.html", m3uTvApp],
   ["resume/index.html", resume],
 ];
 

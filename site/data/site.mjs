@@ -40,7 +40,7 @@ export default {
 
   footerLinks: [
     { label: "m3u suite", href: "/m3u-suite/" },
-    { label: "m3u tv app", href: "/m3u-tv/" },
+    { label: "m3u tv app", href: "/m3u-suite/m3u-tv/" },
     { label: "services", href: "/services/" },
     { label: "resume", href: "/resume/" },
     { label: "github", href: "https://github.com/sparkison", external: true },

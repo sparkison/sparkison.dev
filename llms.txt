@@ -23,7 +23,7 @@ Key facts:
 - [Home](https://sparkison.dev/): who Shaun is, featured work, tech stack, FAQ, contact
 - [Services](https://sparkison.dev/services/): what he builds, how he works, engagement types (project builds, ongoing development, consulting & audits, full-time roles)
 - [m3u suite](https://sparkison.dev/m3u-suite/): overview of the suite, features per app, architecture, install FAQ
-- [M3U TV app](https://sparkison.dev/m3u-tv/): the suite's cross-platform client — features, screenshots, download links (TestFlight, Google Play, GitHub Releases), FAQ
+- [M3U TV app](https://sparkison.dev/m3u-suite/m3u-tv/): the suite's cross-platform client — features, screenshots, download links (TestFlight, Google Play, GitHub Releases), FAQ
 - [Resume](https://sparkison.dev/resume/): work experience, selected projects, skills, education & certification
 
 ## Projects

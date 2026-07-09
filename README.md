@@ -50,11 +50,11 @@ string in every file. Now it's one edit in `site/data/site.mjs` + `npm run build
 | `scripts/update-stats.mjs` | Fetches live GitHub/Docker stats into `site.mjs`, then rebuilds |
 | `scripts/generate-og.mjs` | Rebuilds `og/og.svg` + `og.png` from `site.mjs` |
 | `scripts/optimize-screenshots.mjs` | Converts raw app screenshots to WebP + writes `tv-app-shots.mjs` |
-| `index.html`, `services/`, `m3u-suite/`, `m3u-tv/`, `resume/`, `404.html` | **Generated** — deployed output |
+| `index.html`, `services/`, `m3u-suite/`, `m3u-suite/m3u-tv/`, `resume/`, `404.html` | **Generated** — deployed output |
 | `styles.css` | All styling (dark theme, custom properties, responsive) — hand-written |
 | `main.js` | Progressive enhancement: scroll-reveal, mobile nav, footer year, screenshot carousels — hand-written |
 | `og/og.svg` | Source for the social-share image (edit + `npm run og`, not `og.png` directly) |
-| `m3u-tv/img/*.webp` | Optimized screenshots served on the app page — regenerate via `npm run screenshots`, don't hand-edit |
+| `m3u-suite/m3u-tv/img/*.webp` | Optimized screenshots served on the app page — regenerate via `npm run screenshots`, don't hand-edit |
 | `screenshots/tv-app-screenshots/` | Raw, full-resolution source screenshots, named `desktop1.png`/`mobile1.png`/`tv1.png`/etc. |
 | `fonts/` | Self-hosted Space Grotesk + JetBrains Mono (variable, woff2, no CDN) |
 | `robots.txt` / `sitemap.xml` / `llms.txt` | Crawler + answer-engine directives |
@@ -94,7 +94,7 @@ librsvg2-bin` on Linux). Edit `site/data/site.mjs`'s `ogCard` field (or
 
 ## Updating M3U TV app screenshots
 
-The `/m3u-tv/` page shows three device-mockup carousels (laptop, phone, TV),
+The `/m3u-suite/m3u-tv/` page shows three device-mockup carousels (laptop, phone, TV),
 each auto-populated from whatever's in `screenshots/tv-app-screenshots/` —
 no page-module edits needed for the common cases:
 
@@ -120,7 +120,7 @@ Requires `cwebp` (`brew install webp`) and ImageMagick's `identify`
 (`brew install imagemagick`). `site/data/tv-app-shots.mjs` is generated —
 don't hand-edit it; edit the script or the source screenshots instead. The
 raw PNGs in `screenshots/` are the source; the `.webp` files under
-`m3u-tv/img/` are what the page actually serves.
+`m3u-suite/m3u-tv/img/` are what the page actually serves.
 
 ## Cache lifetime (Cloudflare)
 

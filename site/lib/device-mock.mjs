@@ -20,7 +20,7 @@ export function renderDeviceCarousel({ id, kind, shots }) {
   const slides = shots
     .map(
       (s, i) =>
-        `<img class="mock-slide" src="/m3u-tv/img/${s.file}" width="${s.width}" height="${s.height}" alt="${s.alt}" loading="${i === 0 ? "eager" : "lazy"}">`
+        `<img class="mock-slide" src="/m3u-suite/m3u-tv/img/${s.file}" width="${s.width}" height="${s.height}" alt="${s.alt}" loading="${i === 0 ? "eager" : "lazy"}">`
     )
     .join("\n            ");
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Auto-discovers the M3U TV app screenshots and turns them into what the
- * device-mockup carousels on /m3u-tv/ actually serve.
+ * device-mockup carousels on /m3u-suite/m3u-tv/ actually serve.
  *
  * How to update screenshots:
  *   - Add:    drop a PNG named `<category><n>.png` in screenshots/tv-app-screenshots/
@@ -28,7 +28,7 @@ import { fileURLToPath } from "node:url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const SRC_DIR = join(ROOT, "screenshots/tv-app-screenshots");
-const OUT_DIR = join(ROOT, "m3u-tv/img");
+const OUT_DIR = join(ROOT, "m3u-suite/m3u-tv/img");
 const MANIFEST_PATH = join(ROOT, "site/data/tv-app-shots.mjs");
 
 // Target output width per category — height follows the source aspect ratio.
@@ -94,7 +94,7 @@ for (const [category, items] of Object.entries(byCategory)) {
     );
     const { width, height } = identify(outPath);
     const alt = ALT_TEXT[base] ?? `${category[0].toUpperCase()}${category.slice(1)} screenshot ${num}`;
-    console.log("wrote", `m3u-tv/img/${outFile}`, `(${width}x${height})`);
+    console.log("wrote", `m3u-suite/m3u-tv/img/${outFile}`, `(${width}x${height})`);
     return { file: outFile, width, height, alt };
   });
 }
