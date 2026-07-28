@@ -18,10 +18,10 @@ export function renderDeviceCarousel({ id, kind, shots }) {
   if (!shots?.length) return "";
 
   const slides = shots
-    .map(
-      (s, i) =>
-        `<img class="mock-slide" src="/m3u-suite/m3u-tv/img/${s.file}" width="${s.width}" height="${s.height}" alt="${s.alt}" loading="${i === 0 ? "eager" : "lazy"}">`
-    )
+    .map((s, i) => {
+      const src = `/m3u-suite/m3u-tv/img/${s.file}${s.hash ? `?v=${s.hash}` : ""}`;
+      return `<img class="mock-slide" src="${src}" width="${s.width}" height="${s.height}" alt="${s.alt}" loading="${i === 0 ? "eager" : "lazy"}">`;
+    })
     .join("\n            ");
 
   const dots = shots

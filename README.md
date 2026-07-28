@@ -122,6 +122,12 @@ don't hand-edit it; edit the script or the source screenshots instead. The
 raw PNGs in `screenshots/` are the source; the `.webp` files under
 `m3u-suite/m3u-tv/img/` are what the page actually serves.
 
+Each shot is also served with a `?v=<hash>` content hash (same idea as
+`styles.css`/`main.js` — see Cache lifetime below), so replacing a screenshot
+and re-running `npm run screenshots && npm run build` changes its URL
+automatically. That means a long Cloudflare cache TTL on `/m3u-suite/m3u-tv/img/*`
+is safe too — no manual cache purge needed when screenshots change.
+
 ## Cache lifetime (Cloudflare)
 
 GitHub Pages doesn't support custom response headers, so if a Lighthouse/PageSpeed
@@ -134,16 +140,18 @@ Cloudflare's email-obfuscation script appearing on the page):
 | Field | Value |
 | --- | --- |
 | Rule name | Long cache for static assets |
-| When incoming requests match | `URI Path` ends with `.woff2`, `.css`, `.js`, `.svg`, `.png`, `.webmanifest` (or match `URI Path` starts with `/fonts/`) |
+| When incoming requests match | `URI Path` ends with `.woff2`, `.css`, `.js`, `.svg`, `.png`, `.webp`, `.webmanifest` (or match `URI Path` starts with `/fonts/`) |
 | Then | Cache eligibility: Eligible for cache; Edge TTL: 1 year; Browser TTL: 1 year |
 
-This is safe for `/fonts/*` (the files never change) and for `styles.css`/`main.js`
-specifically *because* `npm run build` appends a content hash as a query string
-(`/styles.css?v=30292a7a`) — the URL changes automatically whenever either file's
-content changes, so a 1-year cache never serves stale CSS/JS after a deploy. Leave
-HTML pages and `og.png`/`favicon.svg`/`apple-touch-icon.png` off this rule (or on a
-short TTL) since those aren't cache-busted — after editing any of those, purge
-cache for the specific URL in Cloudflare (Caching → Configuration → Custom Purge).
+This is safe for `/fonts/*` (the files never change) and for `styles.css`,
+`main.js`, and the `/m3u-suite/m3u-tv/img/*.webp` screenshots specifically
+*because* `npm run build` / `npm run screenshots` appends a content hash as a
+query string (`/styles.css?v=30292a7a`, `/desktop1.webp?v=ef8d5bb6`) — the URL
+changes automatically whenever the file's content changes, so a 1-year cache
+never serves anything stale after a deploy. Leave HTML pages and
+`og.png`/`favicon.svg`/`apple-touch-icon.png` off this rule (or on a short TTL)
+since those aren't cache-busted — after editing any of those, purge cache for
+the specific URL in Cloudflare (Caching → Configuration → Custom Purge).
 
 ## Security headers (Cloudflare)
 

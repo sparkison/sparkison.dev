@@ -143,7 +143,7 @@ export default {
       <div class="download-cards">
         <div class="download-card reveal">
           <span class="card-icon" aria-hidden="true"><svg viewBox="0 -960 960 960" fill="currentColor"><path d="M160-600v-80h80v80h-80Zm0 320v-240h80v240h-80Zm280 0h-80q-33 0-56.5-23.5T280-360v-240q0-33 23.5-56.5T360-680h80q33 0 56.5 23.5T520-600v240q0 33-23.5 56.5T440-280Zm-80-80h80v-240h-80v240Zm200 80v-80h160v-80h-80q-33 0-56.5-23.5T560-520v-80q0-33 23.5-56.5T640-680h160v80H640v80h80q33 0 56.5 23.5T800-440v80q0 33-23.5 56.5T720-280H560Z"/></svg></span>
-          <h3>iOS, Apple TV &amp; macOS</h3>
+          <h3>iOS &amp; Apple TV</h3>
           <p>Public beta via TestFlight</p>
           <a class="btn btn-primary" href="${data.tvApp.testflight}" target="_blank" rel="noopener">Join the beta ↗</a>
         </div>
@@ -155,7 +155,7 @@ export default {
         </div>
         <div class="download-card reveal">
           <span class="card-icon" aria-hidden="true"><svg fill="currentColor" viewBox="0 -960 960 960"><path d="M80-120q-17 0-28.5-11.5T40-160q0-17 11.5-28.5T80-200h800q17 0 28.5 11.5T920-160q0 17-11.5 28.5T880-120H80Zm80-120q-33 0-56.5-23.5T80-320v-440q0-33 23.5-56.5T160-840h640q33 0 56.5 23.5T880-760v440q0 33-23.5 56.5T800-240H160Zm0-80h640v-440H160v440Zm0 0v-440 440Z"/></svg></span>
-          <h3>Linux &amp; Windows</h3>
+          <h3>Linux, Windows &amp; macOS</h3>
           <p>Desktop builds via GitHub Releases</p>
           <a class="btn btn-primary" href="${data.tvApp.githubReleases}" target="_blank" rel="noopener">Download from GitHub ↗</a>
         </div>

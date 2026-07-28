@@ -10,36 +10,42 @@ export default {
       "file": "desktop1.webp",
       "width": 1600,
       "height": 1088,
+      "hash": "ef8d5bb6",
       "alt": "M3U TV home screen with Continue Watching, Live TV, and Movies rows"
     },
     {
       "file": "desktop2.webp",
       "width": 1600,
       "height": 1088,
+      "hash": "71cf5108",
       "alt": "Live TV guide with search, favorites, and a full EPG"
     },
     {
       "file": "desktop3.webp",
       "width": 1600,
       "height": 1088,
+      "hash": "60c79c2d",
       "alt": "Movie detail page with backdrop, synopsis, cast, and resume playback"
     },
     {
       "file": "desktop4.webp",
       "width": 1600,
       "height": 1088,
+      "hash": "0e53fcc0",
       "alt": "Series library with genre filters and ratings"
     },
     {
       "file": "desktop5.webp",
       "width": 1600,
       "height": 1088,
+      "hash": "ef58a910",
       "alt": "Series detail page with season tabs and episode list"
     },
     {
       "file": "desktop6.webp",
       "width": 1600,
       "height": 1088,
+      "hash": "6651f473",
       "alt": "AIOStreams integration showing continue watching and favorites"
     }
   ],
@@ -48,30 +54,35 @@ export default {
       "file": "mobile1.webp",
       "width": 700,
       "height": 1522,
+      "hash": "f25a8cb5",
       "alt": "M3U TV home screen on a phone"
     },
     {
       "file": "mobile2.webp",
       "width": 700,
       "height": 1522,
+      "hash": "8444cbfd",
       "alt": "Live TV guide on a phone"
     },
     {
       "file": "mobile3.webp",
       "width": 700,
       "height": 1522,
+      "hash": "a4c9a57c",
       "alt": "Series library on a phone"
     },
     {
       "file": "mobile4.webp",
       "width": 700,
       "height": 1522,
+      "hash": "fae55703",
       "alt": "Series detail on a phone"
     },
     {
       "file": "mobile5.webp",
       "width": 700,
       "height": 1522,
+      "hash": "9004cfcb",
       "alt": "AIOStreams integration on a phone"
     }
   ],
@@ -80,18 +91,21 @@ export default {
       "file": "tv1.webp",
       "width": 1600,
       "height": 900,
+      "hash": "76226cc8",
       "alt": "M3U TV home screen on the 10-foot TV interface"
     },
     {
       "file": "tv2.webp",
       "width": 1600,
       "height": 900,
+      "hash": "80af8250",
       "alt": "Series library on the 10-foot TV interface"
     },
     {
       "file": "tv3.webp",
       "width": 1600,
       "height": 900,
+      "hash": "0eb460ed",
       "alt": "Series detail on the 10-foot TV interface"
     }
   ],

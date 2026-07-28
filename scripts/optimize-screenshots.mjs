@@ -22,7 +22,8 @@
  */
 
 import { execFileSync } from "node:child_process";
-import { mkdirSync, readdirSync, writeFileSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -63,6 +64,13 @@ function identify(path) {
   return { width, height };
 }
 
+// Short content hash appended as a ?v= query string (same approach build.mjs
+// uses for styles.css/main.js) so Cloudflare/browser caches never need a
+// manual purge — the URL itself changes whenever a screenshot is replaced.
+function hashOf(path) {
+  return createHash("sha256").update(readFileSync(path)).digest("hex").slice(0, 8);
+}
+
 mkdirSync(OUT_DIR, { recursive: true });
 
 const files = readdirSync(SRC_DIR).filter((f) => /^[a-z]+\d+\.png$/i.test(f));
@@ -93,9 +101,10 @@ for (const [category, items] of Object.entries(byCategory)) {
       { stdio: ["ignore", "ignore", "inherit"] }
     );
     const { width, height } = identify(outPath);
+    const hash = hashOf(outPath);
     const alt = ALT_TEXT[base] ?? `${category[0].toUpperCase()}${category.slice(1)} screenshot ${num}`;
-    console.log("wrote", `m3u-suite/m3u-tv/img/${outFile}`, `(${width}x${height})`);
-    return { file: outFile, width, height, alt };
+    console.log("wrote", `m3u-suite/m3u-tv/img/${outFile}`, `(${width}x${height})`, `v=${hash}`);
+    return { file: outFile, width, height, hash, alt };
   });
 }
 
