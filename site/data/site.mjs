@@ -52,6 +52,7 @@ export default {
     repo: "https://github.com/m3ue/m3u-tv",
     testflight: "https://testflight.apple.com/join/hqJYVsJr",
     playStore: "https://play.google.com/store/apps/details?id=dev.sparkison.tv",
+    microsoftStore: "ms-windows-store://pdp/?productid=9P2PBHQ4XZ1L",
     githubReleases: "https://github.com/m3ue/m3u-tv/releases",
   },
 

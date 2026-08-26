@@ -682,9 +682,15 @@ button.btn {
 
 .download-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.25rem;
   margin-top: 2.5rem;
+  max-width: 860px;
+  margin-inline: auto;
+}
+
+@media (max-width: 560px) {
+  .download-cards { grid-template-columns: 1fr; }
 }
 
 .download-card {
