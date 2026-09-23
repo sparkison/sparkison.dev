@@ -9,36 +9,36 @@ export default {
     {
       "file": "desktop1.webp",
       "width": 1600,
-      "height": 1088,
-      "hash": "ef8d5bb6",
+      "height": 1038,
+      "hash": "8018314c",
       "alt": "M3U TV home screen with Continue Watching, Live TV, and Movies rows"
     },
     {
       "file": "desktop2.webp",
       "width": 1600,
-      "height": 1088,
-      "hash": "71cf5108",
+      "height": 1038,
+      "hash": "c87a339c",
       "alt": "Live TV guide with search, favorites, and a full EPG"
     },
     {
       "file": "desktop3.webp",
       "width": 1600,
-      "height": 1088,
-      "hash": "60c79c2d",
+      "height": 1038,
+      "hash": "d652cc64",
       "alt": "Movie detail page with backdrop, synopsis, cast, and resume playback"
     },
     {
       "file": "desktop4.webp",
       "width": 1600,
-      "height": 1088,
-      "hash": "0e53fcc0",
+      "height": 1038,
+      "hash": "7cf3f48d",
       "alt": "Series library with genre filters and ratings"
     },
     {
       "file": "desktop5.webp",
       "width": 1600,
-      "height": 1088,
-      "hash": "ef58a910",
+      "height": 1038,
+      "hash": "f9127098",
       "alt": "Series detail page with season tabs and episode list"
     },
     {
@@ -54,35 +54,35 @@ export default {
       "file": "mobile1.webp",
       "width": 700,
       "height": 1522,
-      "hash": "f25a8cb5",
+      "hash": "29b1e76a",
       "alt": "M3U TV home screen on a phone"
     },
     {
       "file": "mobile2.webp",
       "width": 700,
       "height": 1522,
-      "hash": "8444cbfd",
+      "hash": "b2d7caee",
       "alt": "Live TV guide on a phone"
     },
     {
       "file": "mobile3.webp",
       "width": 700,
       "height": 1522,
-      "hash": "a4c9a57c",
+      "hash": "8c28cd6b",
       "alt": "Series library on a phone"
     },
     {
       "file": "mobile4.webp",
       "width": 700,
       "height": 1522,
-      "hash": "fae55703",
+      "hash": "575454b4",
       "alt": "Series detail on a phone"
     },
     {
       "file": "mobile5.webp",
       "width": 700,
       "height": 1522,
-      "hash": "9004cfcb",
+      "hash": "fdd6211c",
       "alt": "AIOStreams integration on a phone"
     }
   ],
@@ -91,22 +91,36 @@ export default {
       "file": "tv1.webp",
       "width": 1600,
       "height": 900,
-      "hash": "76226cc8",
+      "hash": "5218bae2",
       "alt": "M3U TV home screen on the 10-foot TV interface"
     },
     {
       "file": "tv2.webp",
       "width": 1600,
       "height": 900,
-      "hash": "80af8250",
+      "hash": "6b12f8d0",
       "alt": "Series library on the 10-foot TV interface"
     },
     {
       "file": "tv3.webp",
       "width": 1600,
       "height": 900,
-      "hash": "0eb460ed",
+      "hash": "57edfdf8",
       "alt": "Series detail on the 10-foot TV interface"
+    },
+    {
+      "file": "tv4.webp",
+      "width": 1600,
+      "height": 900,
+      "hash": "b3625960",
+      "alt": "Tv screenshot 4"
+    },
+    {
+      "file": "tv5.webp",
+      "width": 1600,
+      "height": 900,
+      "hash": "e703967a",
+      "alt": "Tv screenshot 5"
     }
   ],
 };

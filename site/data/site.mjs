@@ -59,9 +59,9 @@ export default {
   // Kept in sync with `npm run stats` (scripts/update-stats.mjs), which
   // fetches live GitHub/Docker Hub numbers and rewrites these fields.
   stats: {
-    starsAll: "900+",
-    starsSuite: "900+",
-    dockerPulls: "600K+",
-    dockerPullsLong: "600,000+",
+    starsAll: "1000+",
+    starsSuite: "1000+",
+    dockerPulls: "850K+",
+    dockerPullsLong: "850,000+",
   },
 };
