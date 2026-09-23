@@ -40,13 +40,6 @@ export default {
       "height": 1038,
       "hash": "f9127098",
       "alt": "Series detail page with season tabs and episode list"
-    },
-    {
-      "file": "desktop6.webp",
-      "width": 1600,
-      "height": 1088,
-      "hash": "6651f473",
-      "alt": "AIOStreams integration showing continue watching and favorites"
     }
   ],
   mobile: [
